@@ -1,0 +1,298 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Préchargeur UPG (main.tsx) */
+@keyframes upg-letter-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.35) translateY(28px);
+    filter: blur(8px);
+  }
+  55% {
+    opacity: 1;
+    transform: scale(1.08) translateY(-4px);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes upg-subtitle-fade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes upg-logo-in {
+  from {
+    opacity: 0;
+    transform: scale(0.88) translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.upg-preloader-logo {
+  animation: upg-logo-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.upg-preloader-letter {
+  animation: upg-letter-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.upg-preloader-subtitle {
+  animation: upg-subtitle-fade 0.7s ease-out 0.15s both;
+}
+
+.upg-preloader-dot:nth-child(1) {
+  animation: upg-dot-pulse 1.2s ease-in-out infinite;
+}
+.upg-preloader-dot:nth-child(2) {
+  animation: upg-dot-pulse 1.2s ease-in-out 0.2s infinite;
+}
+.upg-preloader-dot:nth-child(3) {
+  animation: upg-dot-pulse 1.2s ease-in-out 0.4s infinite;
+}
+
+@keyframes upg-dot-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+/* TopBar : barre sous le lien Frais / Admission (durée = TOPBAR_PROMO_ROTATE_MS en inline) */
+@keyframes topbar-promo-underline {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+/* Marquee animation for stadium LED billboard effect */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 220 20% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 8%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 8%;
+    --primary: 210 70% 35%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 25% 95%;
+    --secondary-foreground: 220 20% 8%;
+    --muted: 210 15% 95%;
+    --muted-foreground: 220 10% 42%;
+    --accent: 210 15% 95%;
+    --accent-foreground: 220 20% 8%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 210 20% 88%;
+    --input: 210 20% 88%;
+    --ring: 210 70% 35%;
+    --radius: 0.5rem;
+    --upg-orange: 25 90% 55%;
+    --upg-sky: 210 70% 35%;
+    --upg-sky-light: 210 60% 94%;
+    --upg-dark: 220 20% 8%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 210 70% 35%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 25% 95%;
+    --sidebar-accent-foreground: 220 20% 8%;
+    --sidebar-border: 210 20% 88%;
+    --sidebar-ring: 210 70% 35%;
+  }
+
+  .dark {
+    --background: 220 20% 8%;
+    --foreground: 0 0% 95%;
+    --card: 220 20% 12%;
+    --card-foreground: 0 0% 95%;
+    --popover: 220 20% 12%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 210 70% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 20% 16%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 220 20% 16%;
+    --muted-foreground: 220 10% 60%;
+    --accent: 220 20% 16%;
+    --accent-foreground: 0 0% 95%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 210 70% 45%;
+    --upg-orange: 25 90% 55%;
+    --upg-sky: 210 70% 45%;
+    --upg-sky-light: 210 40% 18%;
+    --upg-dark: 0 0% 95%;
+    --sidebar-background: 220 20% 10%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 210 70% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 20% 16%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 220 20% 20%;
+    --sidebar-ring: 210 70% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Google Translate widget host (hidden, controlled by custom select) */
+.google-translate-host {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.google-translate-host .goog-te-gadget {
+  font-size: 0 !important;
+}
+
+.google-translate-container .goog-te-gadget {
+  font-size: 0 !important;
+  color: transparent !important;
+}
+
+.google-translate-container .goog-te-gadget .goog-te-combo {
+  font-size: 11px !important;
+  background: rgba(255,255,255,0.18) !important;
+  color: white !important;
+  border: 1px solid rgba(255,255,255,0.35) !important;
+  border-radius: 4px !important;
+  padding: 3px 8px !important;
+  outline: none !important;
+  cursor: pointer !important;
+  min-width: 108px !important;
+  width: 108px !important;
+  height: 26px !important;
+  line-height: 18px !important;
+  transition: all 0.2s ease !important;
+  font-weight: 500 !important;
+}
+
+.google-translate-container .goog-te-gadget .goog-te-combo:hover {
+  background: rgba(255,255,255,0.3) !important;
+  border-color: rgba(255,255,255,0.6) !important;
+}
+
+.google-translate-container .goog-te-gadget .goog-te-combo:focus {
+  background: rgba(255,255,255,0.25) !important;
+  border-color: rgba(255,255,255,0.8) !important;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.3) !important;
+}
+
+.google-translate-container .goog-te-gadget .goog-te-combo option {
+  color: #333 !important;
+  background: white !important;
+  padding: 4px 8px !important;
+}
+
+/* Hide Google Translate top bar and unwanted elements */
+.goog-te-banner-frame, .skiptranslate iframe {
+  display: none !important;
+}
+
+/* Google Translate peut mettre body en visibility:hidden sur les SPA — écran blanc */
+body {
+  top: 0 !important;
+  visibility: visible !important;
+  position: relative !important;
+}
+
+#root {
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: block !important;
+  min-height: 100%;
+  min-height: 100dvh;
+}
+
+html.translated-ltr #root,
+html.translated-rtl #root {
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: block !important;
+}
+
+/* Hide the "Powered by Google" text */
+.goog-te-gadget .goog-te-gadget-simple .goog-te-menu-value span {
+  display: none !important;
+}
+
+.goog-te-gadget .goog-te-gadget-simple .goog-te-menu-value:after {
+  content: "Traduire" !important;
+  color: white !important;
+  font-size: 11px !important;
+}
+
+/* Better positioning for small screens */
+@media (max-width: 640px) {
+  .google-translate-container {
+    min-width: 96px;
+  }
+
+  .google-translate-container .goog-te-gadget .goog-te-combo {
+    font-size: 10px !important;
+    padding: 3px 6px !important;
+    min-width: 96px !important;
+    width: 96px !important;
+    height: 24px !important;
+    line-height: 16px !important;
+  }
+}

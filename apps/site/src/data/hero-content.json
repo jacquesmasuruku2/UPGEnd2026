@@ -1,0 +1,53 @@
+[
+  {
+    "id": 1,
+    "image": "/hero-bg.jpg",
+    "title": "Excellence Académique",
+    "subtitle": "Former les leaders de demain",
+    "description": "L'Université Polytechnique de Goma offre une éducation de qualité supérieure pour façonner l'avenir de la RD Congo.",
+    "cta": {
+      "primary": {
+        "text": "S'inscrire",
+        "link": "/admission"
+      },
+      "secondary": {
+        "text": "En savoir plus",
+        "link": "/about"
+      }
+    }
+  },
+  {
+    "id": 2,
+    "image": "/formation.jpg",
+    "title": "Innovation Technologique",
+    "subtitle": "Au cœur du progrès scientifique",
+    "description": "Des programmes modernes et des infrastructures de pointe pour répondre aux défis du 21ème siècle.",
+    "cta": {
+      "primary": {
+        "text": "Nos Formations",
+        "link": "/facultes"
+      },
+      "secondary": {
+        "text": "Découvrir",
+        "link": "/about"
+      }
+    }
+  },
+  {
+    "id": 3,
+    "image": "/hero-bg.jpg",
+    "title": "Vision Globale",
+    "subtitle": "Un impact local et international",
+    "description": "Former des professionnels compétents capables de transformer leur communauté et de s'adapter aux défis mondiaux.",
+    "cta": {
+      "primary": {
+        "text": "Contactez-nous",
+        "link": "/contact"
+      },
+      "secondary": {
+        "text": "Nos Réalisations",
+        "link": "/blog"
+      }
+    }
+  }
+]

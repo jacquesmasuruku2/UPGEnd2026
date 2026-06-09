@@ -1,0 +1,23 @@
+# Copier vers wrangler.toml et adapter (wrangler.toml est ignoré par git).
+# Ne pas committer de database_id ni secrets réels.
+
+name = "upg-api-dev"
+main = "src/index.ts"
+compatibility_date = "2024-11-01"
+
+# --- D1 (SQL) : créer la base puis coller l’ID ---
+# wrangler d1 create upg-d1-preview
+[[d1_databases]]
+binding = "DB"
+database_name = "upg-d1-preview"
+database_id = "REMPLACER_PAR_VOTRE_DATABASE_ID"
+
+# --- R2 (fichiers / images) : créer le bucket puis décommenter ---
+# wrangler r2 bucket create upg-images-preview
+# [[r2_buckets]]
+# binding = "IMAGES"
+# bucket_name = "upg-images-preview"
+
+# Variables non secrètes (ex. origines CORS)
+# [vars]
+# ALLOWED_ORIGIN = "https://www.upgoma.online"

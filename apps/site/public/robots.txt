@@ -1,0 +1,24 @@
+# robots.txt - Université Polytechnique de Goma
+# Optimisation SEO pour Google Sitelinks
+# Pages stratégiques : accueil, présentation, admissions, facultés, contact, blog, FAQ
+
+User-agent: *
+Allow: /
+Crawl-delay: 1
+
+# Autoriser explicitement les pages stratégiques pour les Sitelinks
+Allow: /about
+Allow: /admission
+Allow: /contact
+Allow: /blog
+Allow: /faq
+Allow: /faculte/
+Allow: /college-etudiants
+
+# Bloquer les pages techniques/administratives
+Disallow: /admin
+Disallow: /systeme-academique/
+Disallow: /confirmer-newsletter
+Disallow: /*?*utm_source=
+
+Sitemap: https://www.upgoma.org/sitemap.xml
