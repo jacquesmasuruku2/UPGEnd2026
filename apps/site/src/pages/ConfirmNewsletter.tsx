@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import Layout from "@/components/Layout";
-import { CheckCircle, XCircle, Loader2 } from "lucide-react";
+import { CheckCircleIcon, XCircleIcon, ArrowPathIcon } from "@heroicons/react/24/outline";
 import { Button } from "@/components/ui/button";
 
 const ConfirmNewsletter = () => {
@@ -59,13 +59,13 @@ const ConfirmNewsletter = () => {
         <div className="text-center max-w-md">
           {status === "loading" && (
             <div className="flex flex-col items-center gap-4">
-              <Loader2 className="w-12 h-12 animate-spin text-primary" />
+              <ArrowPathIcon className="w-12 h-12 animate-spin text-primary" />
               <p className="text-lg text-muted-foreground">Confirmation en cours...</p>
             </div>
           )}
           {status === "success" && (
             <div className="flex flex-col items-center gap-4">
-              <CheckCircle className="w-16 h-16 text-green-500" />
+              <CheckCircleIcon className="w-16 h-16 text-green-500" />
               <h1 className="text-2xl font-bold">Inscription confirmée !</h1>
               <p className="text-muted-foreground">
                 Merci ! Votre adresse email a été confirmée. Vous recevrez désormais nos actualités.
@@ -77,7 +77,7 @@ const ConfirmNewsletter = () => {
           )}
           {status === "error" && (
             <div className="flex flex-col items-center gap-4">
-              <XCircle className="w-16 h-16 text-destructive" />
+              <XCircleIcon className="w-16 h-16 text-destructive" />
               <h1 className="text-2xl font-bold">Lien invalide</h1>
               <p className="text-muted-foreground">
                 Ce lien de confirmation est invalide ou a déjà été utilisé.

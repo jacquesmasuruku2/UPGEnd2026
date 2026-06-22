@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { supabase } from "@/integrations/supabase/client";
-import { Wrench } from "lucide-react";
+import { WrenchScrewdriverIcon } from "@heroicons/react/24/outline";
 
 const ServicesPage = () => {
   const [services, setServices] = useState<any[]>([]);
@@ -29,8 +29,7 @@ const ServicesPage = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s) => (
-            <Link
-              key={s.id}
+            <Link               key={s.id}
               to={`/service/${s.slug}`}
               className="group border border-border overflow-hidden bg-card hover:shadow-lg transition-shadow"
             >
@@ -39,7 +38,7 @@ const ServicesPage = () => {
               )}
               <div className="p-5">
                 <h2 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors flex items-center gap-2">
-                  <Wrench className="w-4 h-4 text-primary" />
+                  <WrenchScrewdriverIcon className="w-4 h-4 text-primary" />
                   {s.name}
                 </h2>
                 {s.description && (

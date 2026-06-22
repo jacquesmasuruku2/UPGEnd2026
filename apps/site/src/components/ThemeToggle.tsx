@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"; // Force Vercel deploy for theme fix - 2026-05-04
 
-import { Moon, Sun } from "lucide-react";
+import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
 import { Button } from "@/components/ui/button";
 
 const ThemeToggle = () => {
@@ -41,7 +41,7 @@ const ThemeToggle = () => {
       onClick={() => setDark(!dark)}
       className="text-foreground hover:bg-secondary"
     >
-      {dark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+      {dark ? <SunIcon className="w-5 h-5" /> : <MoonIcon className="w-5 h-5" />}
     </Button>
   );
 };

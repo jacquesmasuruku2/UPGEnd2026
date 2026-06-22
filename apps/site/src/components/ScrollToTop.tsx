@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { ChevronUp, ChevronDown } from "lucide-react";
+import { ChevronUpIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -98,7 +98,7 @@ const ScrollToTop = () => {
         className="w-12 h-12 rounded-full bg-primary text-primary-foreground shadow-lg hover:bg-primary/90 transition-all duration-300 flex items-center justify-center"
         aria-label={label}
       >
-        {isAtTop ? <ChevronDown className="w-6 h-6" /> : <ChevronUp className="w-6 h-6" />}
+        {isAtTop ? <ChevronDownIcon className="w-6 h-6" /> : <ChevronUpIcon className="w-6 h-6" />}
       </button>
     </div>
   );

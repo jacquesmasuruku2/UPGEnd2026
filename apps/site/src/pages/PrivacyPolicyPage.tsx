@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout";
-import { Shield, Lock, Eye, Database, UserCheck, Globe, Mail } from "lucide-react";
+import { ShieldCheck, LockClosed, EyeIcon, ServerIcon, UserCheck, GlobeAlt, Envelope } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 
 const PrivacyPolicyPage = () => {
@@ -10,7 +10,7 @@ const PrivacyPolicyPage = () => {
         <div className="container mx-auto px-4 text-center">
           <div className="flex justify-center mb-4">
             <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center">
-              <Shield className="w-8 h-8" />
+              <ShieldCheckIcon className="w-8 h-8" />
             </div>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold mb-3">Politique de Confidentialité</h1>
@@ -28,7 +28,7 @@ const PrivacyPolicyPage = () => {
             {/* Introduction */}
             <div>
               <h2 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
-                <Shield className="w-5 h-5 text-primary" /> Introduction
+                <ShieldCheckIcon className="w-5 h-5 text-primary" /> Introduction
               </h2>
               <p className="text-muted-foreground leading-relaxed">
                 L'Université Polytechnique de Goma (UPG), établissement d'enseignement supérieur et universitaire situé à Goma, République Démocratique du Congo, s'engage à protéger la vie privée et les données personnelles de ses étudiants, personnels, visiteurs et utilisateurs de son site web. La présente politique de confidentialité décrit la manière dont nous collectons, utilisons, stockons et protégeons vos informations personnelles, conformément à la législation congolaise en vigueur et aux bonnes pratiques internationales en matière de protection des données.
@@ -38,7 +38,7 @@ const PrivacyPolicyPage = () => {
             {/* Données collectées */}
             <div>
               <h2 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
-                <Database className="w-5 h-5 text-primary" /> 1. Données Personnelles Collectées
+                <ServerIcon className="w-5 h-5 text-primary" /> 1. Données Personnelles Collectées
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 Dans le cadre de nos activités académiques et de l'utilisation de notre site web, nous pouvons collecter les informations suivantes :
@@ -68,7 +68,7 @@ const PrivacyPolicyPage = () => {
             {/* Finalités */}
             <div>
               <h2 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
-                <Eye className="w-5 h-5 text-primary" /> 2. Finalités du Traitement
+                <EyeIcon className="w-5 h-5 text-primary" /> 2. Finalités du Traitement
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 Vos données personnelles sont collectées et traitées pour les finalités suivantes :
@@ -95,7 +95,7 @@ const PrivacyPolicyPage = () => {
             {/* Base légale */}
             <div>
               <h2 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
-                <UserCheck className="w-5 h-5 text-primary" /> 3. Base Légale du Traitement
+                <UserCheckIcon className="w-5 h-5 text-primary" /> 3. Base Légale du Traitement
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-3">
                 Le traitement de vos données repose sur les bases légales suivantes, conformément au droit congolais :
@@ -118,7 +118,7 @@ const PrivacyPolicyPage = () => {
             {/* Protection */}
             <div>
               <h2 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
-                <Lock className="w-5 h-5 text-primary" /> 4. Sécurité et Protection des Données
+                <LockClosedIcon className="w-5 h-5 text-primary" /> 4. Sécurité et Protection des Données
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 L'UPG met en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos données personnelles contre tout accès non autorisé, perte, altération ou divulgation :
@@ -133,7 +133,7 @@ const PrivacyPolicyPage = () => {
                   "Surveillance et audit régulier des systèmes d'information",
                 ].map((item) => (
                   <div key={item} className="bg-muted/50 rounded-lg p-3 border border-border text-sm text-muted-foreground flex items-start gap-2">
-                    <Lock className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                    <LockClosedIcon className="w-4 h-4 text-primary mt-0.5 shrink-0" />
                     {item}
                   </div>
                 ))}
@@ -143,7 +143,7 @@ const PrivacyPolicyPage = () => {
             {/* Durée de conservation */}
             <div>
               <h2 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
-                <Database className="w-5 h-5 text-primary" /> 5. Durée de Conservation
+                <ServerIcon className="w-5 h-5 text-primary" /> 5. Durée de Conservation
               </h2>
               <p className="text-muted-foreground leading-relaxed">
                 Vos données personnelles sont conservées pendant la durée nécessaire aux finalités pour lesquelles elles ont été collectées. Les dossiers académiques des étudiants sont conservés conformément aux exigences du Ministère de l'ESU de la RDC. Les données liées à la navigation web et aux cookies sont conservées pour une durée maximale de 13 mois. Vous pouvez à tout moment demander la suppression de vos données non nécessaires au fonctionnement académique.
@@ -153,7 +153,7 @@ const PrivacyPolicyPage = () => {
             {/* Droits */}
             <div>
               <h2 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
-                <UserCheck className="w-5 h-5 text-primary" /> 6. Vos Droits
+                <UserCheckIcon className="w-5 h-5 text-primary" /> 6. Vos Droits
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 Conformément à la législation applicable, vous disposez des droits suivants concernant vos données personnelles :
@@ -178,7 +178,7 @@ const PrivacyPolicyPage = () => {
             {/* Transfert international */}
             <div>
               <h2 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
-                <Globe className="w-5 h-5 text-primary" /> 7. Transfert International de Données
+                <GlobeAltIcon className="w-5 h-5 text-primary" /> 7. Transfert International de Données
               </h2>
               <p className="text-muted-foreground leading-relaxed">
                 Certaines données peuvent être hébergées sur des serveurs situés en dehors de la RDC dans le cadre de l'utilisation de services cloud pour le fonctionnement de notre site web. Dans ce cas, l'UPG s'assure que des garanties appropriées sont mises en place pour protéger vos données conformément aux standards internationaux de sécurité. Aucune donnée personnelle n'est vendue ou partagée à des tiers à des fins commerciales.
@@ -188,7 +188,7 @@ const PrivacyPolicyPage = () => {
             {/* Cookies */}
             <div>
               <h2 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
-                <Eye className="w-5 h-5 text-primary" /> 8. Cookies et Technologies de Suivi
+                <EyeIcon className="w-5 h-5 text-primary" /> 8. Cookies et Technologies de Suivi
               </h2>
               <p className="text-muted-foreground leading-relaxed">
                 Notre site web <strong className="text-foreground">n'utilise pas de cookies</strong> pour suivre ou analyser le comportement des utilisateurs. Seules les données de stockage local du navigateur (localStorage) sont utilisées pour mémoriser vos préférences de langue. Aucune donnée de navigation n'est collectée à des fins publicitaires ou de profilage.
@@ -198,7 +198,7 @@ const PrivacyPolicyPage = () => {
             {/* Contact */}
             <div className="bg-primary/5 border border-primary/20 rounded-xl p-6">
               <h2 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
-                <Mail className="w-5 h-5 text-primary" /> 9. Contact
+                <EnvelopeIcon className="w-5 h-5 text-primary" /> 9. Contact
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 Pour toute question relative à la présente politique de confidentialité ou pour exercer vos droits, vous pouvez nous contacter :

@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import ImageUpload from "./ImageUpload";
 import RichTextToolbar from "./RichTextToolbar";
-import { Plus, Pencil, Trash2, Save, X, Eye, EyeOff } from "lucide-react";
+import { PlusIcon, PencilIcon, TrashIcon, BookmarkIcon, XMarkIcon, EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 
 interface FormData {
   id?: string;
@@ -63,7 +63,7 @@ const AdminBlog = () => {
       <div className="flex justify-between items-center">
         <h3 className="text-lg font-bold text-foreground">Articles ({items?.length || 0})</h3>
         <Button size="sm" onClick={() => setEditing(empty)}>
-          <Plus className="w-4 h-4 mr-1" /> Ajouter
+          <PlusIcon className="w-4 h-4 mr-1" /> Ajouter
         </Button>
       </div>
 
@@ -111,10 +111,10 @@ const AdminBlog = () => {
           <ImageUpload value={editing.image_url} onChange={(url) => setEditing({ ...editing, image_url: url })} folder="blog" />
           <div className="flex gap-2">
             <Button size="sm" onClick={handleSave} disabled={upsert.isPending}>
-              <Save className="w-4 h-4 mr-1" /> Sauvegarder
+              <BookmarkIcon className="w-4 h-4 mr-1" /> Sauvegarder
             </Button>
             <Button size="sm" variant="outline" onClick={() => setEditing(null)}>
-              <X className="w-4 h-4 mr-1" /> Annuler
+              <XMarkIcon className="w-4 h-4 mr-1" /> Annuler
             </Button>
           </div>
         </div>
@@ -131,17 +131,17 @@ const AdminBlog = () => {
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2">
                 <h4 className="font-bold text-foreground text-sm truncate">{a.title}</h4>
-                {a.published ? <Eye className="w-3 h-3 text-green-600 shrink-0" /> : <EyeOff className="w-3 h-3 text-muted-foreground shrink-0" />}
+                {a.published ? <EyeIcon className="w-3 h-3 text-green-600 shrink-0" /> : <EyeSlashIcon className="w-3 h-3 text-muted-foreground shrink-0" />}
               </div>
               <p className="text-muted-foreground text-xs">{a.category} • {a.author}</p>
               <p className="text-muted-foreground text-xs">Publication : {toDateLabel(a.published_at)}</p>
             </div>
             <div className="flex gap-1 shrink-0">
               <Button size="icon" variant="ghost" onClick={() => setEditing({ id: a.id, title: a.title, excerpt: a.excerpt || "", content: a.content || "", category: a.category || "", author: a.author || "", image_url: a.image_url || "", published: a.published || false, published_at: toDateInputValue(a.published_at) })}>
-                <Pencil className="w-4 h-4" />
+                <PencilIcon className="w-4 h-4" />
               </Button>
               <Button size="icon" variant="ghost" className="text-destructive" onClick={() => remove.mutate(a.id)}>
-                <Trash2 className="w-4 h-4" />
+                <TrashIcon className="w-4 h-4" />
               </Button>
             </div>
           </div>

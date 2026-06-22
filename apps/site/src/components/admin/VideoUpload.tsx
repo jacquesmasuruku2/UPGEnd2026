@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Upload, X, Video } from "lucide-react";
+import { ArrowUpTrayIcon, XMarkIcon, VideoCameraIcon } from "@heroicons/react/24/outline";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { uploadVideo } from "@/hooks/useSupabaseData";
@@ -46,7 +46,7 @@ const VideoUpload = ({ value, onChange, folder }: VideoUploadProps) => {
             className="absolute right-2 top-2 rounded-full bg-destructive p-1 text-destructive-foreground"
             aria-label="Retirer la vidéo"
           >
-            <X className="h-3 w-3" />
+            <XMarkIcon className="h-3 w-3" />
           </button>
         </div>
       ) : null}
@@ -65,7 +65,7 @@ const VideoUpload = ({ value, onChange, folder }: VideoUploadProps) => {
           onClick={() => fileRef.current?.click()}
           disabled={uploading}
         >
-          <Upload className="mr-1 h-4 w-4" />
+          <ArrowUpTrayIcon className="mr-1 h-4 w-4" />
           {uploading ? "Upload..." : "Uploader"}
         </Button>
         <Input

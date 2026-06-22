@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Trash2, Plus, Edit, FileUp, FileText } from "lucide-react";
+import { TrashIcon, PlusIcon, PencilIcon, ArrowUpTrayIcon, DocumentIcon } from "@heroicons/react/24/outline";
 import { useFees, useUpsertFee, useDeleteFee, uploadImage } from "@/hooks/useSupabaseData";
 import { toast } from "sonner";
 
@@ -72,7 +72,7 @@ const AdminFees = () => {
         <Input placeholder="Description" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
         <div className="flex items-center gap-2">
           <label className="flex items-center gap-2 cursor-pointer border border-border rounded-md px-3 py-2 text-sm bg-background hover:bg-secondary/50 transition-colors flex-1">
-            <FileUp className="w-4 h-4 text-muted-foreground" />
+            <ArrowUpTrayIcon className="w-4 h-4 text-muted-foreground" />
             <span className="text-muted-foreground truncate">
               {uploading ? "Upload..." : form.pdf_url ? "PDF ajouté ✓" : "Joindre PDF"}
             </span>
@@ -80,7 +80,7 @@ const AdminFees = () => {
           </label>
           {form.pdf_url && (
             <a href={form.pdf_url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-              <FileText className="w-5 h-5" />
+              <DocumentIcon className="w-5 h-5" />
             </a>
           )}
         </div>
@@ -88,7 +88,7 @@ const AdminFees = () => {
 
       <div className="flex gap-2">
         <Button onClick={handleSave} disabled={uploading}>
-          {editing ? <Edit className="w-4 h-4 mr-1" /> : <Plus className="w-4 h-4 mr-1" />}
+          {editing ? <PencilIcon className="w-4 h-4 mr-1" /> : <PlusIcon className="w-4 h-4 mr-1" />}
           {editing ? "Modifier" : "Ajouter"}
         </Button>
         {editing && (
@@ -116,7 +116,7 @@ const AdminFees = () => {
                 <td className="p-3 text-center">
                   {(fee as any).pdf_url ? (
                     <a href={(fee as any).pdf_url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline inline-flex items-center gap-1">
-                      <FileText className="w-4 h-4" /> Voir
+                      <DocumentIcon className="w-4 h-4" /> Voir
                     </a>
                   ) : (
                     <span className="text-muted-foreground">—</span>
@@ -125,10 +125,10 @@ const AdminFees = () => {
                 <td className="p-3 text-right">
                   <div className="flex justify-end gap-2">
                     <Button variant="outline" size="sm" onClick={() => handleEdit(fee)}>
-                      <Edit className="w-3 h-3" />
+                      <PencilIcon className="w-3 h-3" />
                     </Button>
                     <Button variant="outline" size="sm" onClick={() => remove.mutate(fee.id)} className="text-destructive">
-                      <Trash2 className="w-3 h-3" />
+                      <TrashIcon className="w-3 h-3" />
                     </Button>
                   </div>
                 </td>

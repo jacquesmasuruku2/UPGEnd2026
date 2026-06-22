@@ -2,7 +2,7 @@ import Layout from "@/components/Layout";
 import { useGallery } from "@/hooks/useSupabaseData";
 import AnimatedSection from "@/components/AnimatedSection";
 import GalleryViewer from "@/components/gallery/GalleryViewer";
-import { Image } from "lucide-react";
+import { Photo } from "@heroicons/react/24/outline";
 
 const GalleryPage = () => {
   const { data: images, isLoading } = useGallery();
@@ -31,7 +31,7 @@ const GalleryPage = () => {
           ) : (
             <AnimatedSection>
               <div className="text-center py-20 border border-dashed border-border/80 bg-muted/20">
-                <Image className="w-16 h-16 mx-auto mb-4 text-muted-foreground/35" aria-hidden />
+                <PhotoIcon className="w-16 h-16 mx-auto mb-4 text-muted-foreground/35" aria-hidden />
                 <p className="text-muted-foreground max-w-md mx-auto leading-relaxed">
                   La galerie sera bientôt disponible. Les photos seront ajoutées via le panneau
                   d&apos;administration.

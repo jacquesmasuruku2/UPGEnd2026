@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, ChevronDown, Plus } from "lucide-react";
+import { Bars3Icon, XMarkIcon, ChevronDownIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useAllFacultyContent } from "@/hooks/useSupabaseData";
 import { useIsLgUp } from "@/hooks/use-mobile";
@@ -94,8 +94,7 @@ const Navbar = () => {
   return (
     <nav className="bg-background border-b border-border sticky top-0 z-40 shadow-sm">
       <div className="container mx-auto flex h-16 items-center justify-between gap-3 px-4">
-        <Link
-          to="/"
+        <Link           to="/"
           className="flex min-w-0 flex-1 items-center gap-2 lg:flex-initial"
           aria-label="Université Polytechnique de Goma - Accueil"
         >
@@ -129,7 +128,7 @@ const Navbar = () => {
                   aria-haspopup="true"
                 >
                   {item.label}
-                  <ChevronDown className="w-3 h-3" />
+                  <ChevronDownIcon className="w-3 h-3" />
                 </button>
                 {dropdownOpen === item.label && (
                   <div className="absolute top-full left-0 bg-card border border-border rounded-lg shadow-lg py-1 min-w-[220px] animate-fade-in">
@@ -143,7 +142,7 @@ const Navbar = () => {
                         >
                           <button className="flex w-full items-center justify-between px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-[hsl(var(--upg-orange))] transition-all duration-300 hover:scale-105">
                             <span>{child.label}</span>
-                            <ChevronDown className="h-3 w-3" />
+                            <ChevronDownIcon className="h-3 w-3" />
                           </button>
                           {index < item.children.length - 1 && <div className="mx-4 h-px bg-border/50" />}
                           {nestedOpen === child.label && (
@@ -193,8 +192,7 @@ const Navbar = () => {
                         </>
                       ) : (
                         <>
-                          <Link
-                            key={child.label}
+                          <Link                             key={child.label}
                             to={child.href}
                             className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-[hsl(var(--upg-orange))] transition-all duration-300 hover:scale-105"
                             onClick={() => setDropdownOpen(null)}
@@ -218,8 +216,7 @@ const Navbar = () => {
                 {item.label}
               </button>
             ) : (
-                        <Link
-                          key={item.label}
+                        <Link                           key={item.label}
                           to={item.href!}
                           className="px-3 py-1 text-sm font-medium text-foreground hover:text-[hsl(var(--upg-orange))] transition-all duration-300 rounded-md hover:bg-secondary hover:scale-105"
                           aria-label={`Naviguer vers ${item.label}`}
@@ -273,7 +270,7 @@ const Navbar = () => {
                 className="p-2 rounded-lg hover:bg-accent transition-colors"
                 aria-label="Fermer le menu"
               >
-                <X className="w-5 h-5" />
+                <XMarkIcon className="w-5 h-5" />
               </button>
             </div>
             
@@ -298,7 +295,7 @@ const Navbar = () => {
                         className="flex items-center justify-between w-full px-2 py-1 text-sm font-medium text-foreground rounded-lg hover:bg-accent hover:text-[hsl(var(--upg-orange))] transition-all duration-300 hover:scale-105"
                       >
                         <span>{item.label}</span>
-                        <Plus className={`w-4 h-4 transition-transform ${dropdownOpen === item.label ? 'rotate-45' : ''}`} />
+                        <PlusIcon className={`w-4 h-4 transition-transform ${dropdownOpen === item.label ? 'rotate-45' : ''}`} />
                       </button>
                       
                       {dropdownOpen === item.label && (
@@ -312,7 +309,7 @@ const Navbar = () => {
                                     className="flex items-center justify-between w-full px-2 py-1 text-sm text-muted-foreground hover:text-[hsl(var(--upg-orange))] rounded-lg transition-all duration-300 hover:scale-105"
                                   >
                                     <span>{child.label}</span>
-                                    <Plus className={`w-3 h-3 transition-transform ${nestedOpen === child.label ? 'rotate-45' : ''}`} />
+                                    <PlusIcon className={`w-3 h-3 transition-transform ${nestedOpen === child.label ? 'rotate-45' : ''}`} />
                                   </button>
                                   
                                   {nestedOpen === child.label && (
@@ -360,8 +357,7 @@ const Navbar = () => {
                                   <div className="w-2 h-2 bg-accent rounded"></div>
                                 </a>
                               ) : (
-                                <Link
-                                  key={child.label}
+                                <Link                                   key={child.label}
                                   to={child.href}
                                   className="flex items-center justify-between px-3 py-1 text-sm text-muted-foreground hover:text-[hsl(var(--upg-orange))] transition-all duration-300 hover:scale-105"
                                   onClick={() => setMobileOpen(false)}
@@ -384,8 +380,7 @@ const Navbar = () => {
                       {item.label}
                     </button>
                   ) : (
-                    <Link
-                      key={item.label}
+                    <Link                       key={item.label}
                       to={item.href!}
                       className="flex items-center justify-between w-full px-2 py-1 text-sm font-medium text-foreground rounded-lg hover:bg-accent hover:text-[hsl(var(--upg-orange))] transition-all duration-300 hover:scale-105"
                       onClick={() => setMobileOpen(false)}

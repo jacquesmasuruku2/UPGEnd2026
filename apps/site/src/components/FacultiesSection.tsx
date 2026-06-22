@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import AnimatedSection from "./AnimatedSection";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useState } from "react";
@@ -41,8 +41,7 @@ const FacultiesSection = () => {
 
         {/* Featured first faculty */}
         <AnimatedSection>
-          <Link
-            to={`/faculte/${first.slug}`}
+          <Link             to={`/faculte/${first.slug}`}
             className="block max-w-6xl mx-auto mb-8 group"
             onMouseEnter={() => setHoveredIdx(0)}
             onMouseLeave={() => setHoveredIdx(null)}
@@ -56,7 +55,7 @@ const FacultiesSection = () => {
                   {first.desc}
                 </p>
                 <div className="flex items-center gap-1.5 text-sm text-primary font-semibold group-hover:gap-3 transition-all">
-                  Explorer la faculté <ArrowRight className="w-4 h-4" />
+                  Explorer la faculté <ArrowRightIcon className="w-4 h-4" />
                 </div>
               </div>
               <div className="order-1 lg:order-2 flex flex-col min-h-0 bg-secondary/40 border-b border-border lg:border-b-0 lg:border-l border-border/60">
@@ -92,8 +91,7 @@ const FacultiesSection = () => {
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {faculties.slice(1).map((f, i) => (
             <AnimatedSection key={f.name} delay={i * 0.08}>
-              <Link
-                to={`/faculte/${f.slug}`}
+              <Link                 to={`/faculte/${f.slug}`}
                 className="block bg-card border border-border overflow-hidden hover:shadow-lg hover:border-primary/20 transition-all duration-300 group h-full"
                 onMouseEnter={() => setHoveredIdx(i + 1)}
                 onMouseLeave={() => setHoveredIdx(null)}
@@ -131,7 +129,7 @@ const FacultiesSection = () => {
                   </div>
 
                   <div className="flex items-center gap-1 text-xs text-primary font-semibold group-hover:gap-2 transition-all">
-                    Découvrir <ArrowRight className="w-3.5 h-3.5" />
+                    Découvrir <ArrowRightIcon className="w-3.5 h-3.5" />
                   </div>
                 </div>
               </Link>

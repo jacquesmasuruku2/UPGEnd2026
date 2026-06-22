@@ -1,4 +1,4 @@
-import { Calendar, Tag } from "lucide-react";
+import { CalendarIcon, TagIcon } from "@heroicons/react/24/outline";
 import { Button } from "@/components/ui/button";
 import { useBlogArticles } from "@/hooks/useSupabaseData";
 import AnimatedSection from "./AnimatedSection";
@@ -37,12 +37,12 @@ const NewsSection = () => {
                   <div className="p-5 flex flex-col flex-1">
                     <div className="flex flex-wrap items-center gap-3 mb-3 text-xs text-muted-foreground">
                       <span className="flex items-center gap-1">
-                        <Calendar className="w-3 h-3" />
+                        <CalendarIcon className="w-3 h-3" />
                         {format(new Date(article.published_at || article.created_at), "d MMM yyyy", { locale: fr })}
                       </span>
                       {article.category && (
                         <span className="flex items-center gap-1 text-upg-orange">
-                          <Tag className="w-3 h-3" />
+                          <TagIcon className="w-3 h-3" />
                           {article.category}
                         </span>
                       )}

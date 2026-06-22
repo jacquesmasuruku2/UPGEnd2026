@@ -1,4 +1,4 @@
-import { CalendarDays } from "lucide-react";
+import { CalendarDaysIcon } from "@heroicons/react/24/outline";
 import { useCalendarEvents } from "@/hooks/useSupabaseData";
 import { format, isFuture, isToday } from "date-fns";
 import { fr } from "date-fns/locale";
@@ -101,9 +101,9 @@ const CalendarSection = () => {
                               {event.title}
                             </h3>
                             {event.category && (
-                              <Badge variant="secondary" className="shrink-0 text-xs">
+                              <BadgeIcon variant="secondary" className="shrink-0 text-xs">
                                 {event.category}
-                              </Badge>
+                              </BadgeIcon>
                             )}
                           </div>
 
@@ -114,7 +114,7 @@ const CalendarSection = () => {
                           )}
 
                           <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                            <CalendarDays className="w-3.5 h-3.5" />
+                            <CalendarDaysIcon className="w-3.5 h-3.5" />
                             <span>
                               {isMultiDay
                                 ? `${format(eventDate, "d MMM", { locale: fr })} - ${format(endDate, "d MMM yyyy", { locale: fr })}`
@@ -165,13 +165,13 @@ const CalendarSection = () => {
                               {event.title}
                             </h3>
                             <div className="flex items-center gap-2 shrink-0">
-                              <Badge variant="outline" className="text-[10px] uppercase tracking-wide">
+                              <BadgeIcon variant="outline" className="text-[10px] uppercase tracking-wide">
                                 Passé
-                              </Badge>
+                              </BadgeIcon>
                               {event.category && (
-                                <Badge variant="secondary" className="text-xs">
+                                <BadgeIcon variant="secondary" className="text-xs">
                                   {event.category}
-                                </Badge>
+                                </BadgeIcon>
                               )}
                             </div>
                           </div>
@@ -183,7 +183,7 @@ const CalendarSection = () => {
                           )}
 
                           <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                            <CalendarDays className="w-3.5 h-3.5" />
+                            <CalendarDaysIcon className="w-3.5 h-3.5" />
                             <span>
                               {isMultiDay
                                 ? `${format(eventDate, "d MMM", { locale: fr })} - ${format(endDate, "d MMM yyyy", { locale: fr })}`
@@ -219,7 +219,7 @@ const CalendarSection = () => {
                 </DialogHeader>
                 <div className="space-y-3 text-sm">
                   <div className="flex items-center gap-2 text-muted-foreground">
-                    <CalendarDays className="w-4 h-4" />
+                    <CalendarDaysIcon className="w-4 h-4" />
                     <span>
                       {selectedEvent.end_date && selectedEvent.end_date !== selectedEvent.event_date
                         ? `${format(new Date(selectedEvent.event_date), "d MMM yyyy", { locale: fr })} - ${format(new Date(selectedEvent.end_date), "d MMM yyyy", { locale: fr })}`
@@ -227,7 +227,7 @@ const CalendarSection = () => {
                     </span>
                   </div>
                   {selectedEvent.category && (
-                    <Badge variant="secondary">{selectedEvent.category}</Badge>
+                    <BadgeIcon variant="secondary">{selectedEvent.category}</BadgeIcon>
                   )}
                   <p className="text-foreground leading-relaxed whitespace-pre-line">
                     {selectedEvent.description?.trim() || "Aucun détail supplémentaire."}

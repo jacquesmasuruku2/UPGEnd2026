@@ -65,7 +65,7 @@ if (!SUPABASE_URL.includes('env-manquant') && import.meta.env.DEV) {
   console.info(`[UPG] Base Supabase (données du site) : ${SUPABASE_URL}`);
 }
 
-export const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
+export const supabase = createClient<DatabaseIcon>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
   auth: {
     storage: getStorageForSupabase(),
     persistSession: true,

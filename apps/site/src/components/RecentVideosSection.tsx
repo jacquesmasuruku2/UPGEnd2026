@@ -1,4 +1,4 @@
-import { PlayCircle } from "lucide-react";
+import { PlayCircleIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useVideos } from "@/hooks/useSupabaseData";
@@ -44,7 +44,7 @@ const RecentVideosSection = () => {
                   </div>
                   <div className="space-y-1.5 p-4">
                     <p className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
-                      <PlayCircle className="h-3.5 w-3.5" aria-hidden />
+                      <PlayCircleIcon className="h-3.5 w-3.5" aria-hidden />
                       Vidéo publiée
                     </p>
                     <h3 className="line-clamp-2 text-base font-semibold text-foreground">{video.title}</h3>

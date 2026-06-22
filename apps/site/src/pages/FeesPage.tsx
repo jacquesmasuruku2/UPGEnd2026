@@ -2,7 +2,7 @@ import Layout from "@/components/Layout";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useFees } from "@/hooks/useSupabaseData";
 import AnimatedSection from "@/components/AnimatedSection";
-import { GraduationCap, ChevronRight, Banknote, CreditCard, Clock } from "lucide-react";
+import { AcademicCapIcon, ChevronRightIcon, BanknotesIcon, CreditCardIcon, ClockIcon } from "@heroicons/react/24/outline";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useMemo, useState } from "react";
@@ -66,7 +66,7 @@ const FeesPage = () => {
               <Link to="/" className="transition-colors hover:text-primary-foreground">
                 {t("nav.home")}
               </Link>
-              <ChevronRight className="h-3.5 w-3.5 shrink-0 opacity-80" />
+              <ChevronRightIcon className="h-3.5 w-3.5 shrink-0 opacity-80" />
               <span className="font-medium text-primary-foreground/95">{t("fees.title")}</span>
             </div>
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
@@ -76,8 +76,7 @@ const FeesPage = () => {
                     <h1 className="text-3xl font-semibold tracking-tight drop-shadow-sm sm:text-4xl md:text-[2.35rem]">
                       {t("fees.title")}
                     </h1>
-                    <CreditCard
-                      className="h-8 w-8 shrink-0 text-primary-foreground/90 drop-shadow-sm sm:h-9 sm:w-9 md:h-10 md:w-10"
+                    <CreditCardIcon                       className="h-8 w-8 shrink-0 text-primary-foreground/90 drop-shadow-sm sm:h-9 sm:w-9 md:h-10 md:w-10"
                       strokeWidth={1.5}
                       aria-hidden
                     />
@@ -123,7 +122,7 @@ const FeesPage = () => {
             <AnimatedSection>
               <div className="mx-auto max-w-lg rounded-2xl border border-border bg-card px-8 py-14 text-center shadow-sm">
                 <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-muted">
-                  <Clock className="h-7 w-7 text-muted-foreground" strokeWidth={1.5} />
+                  <ClockIcon className="h-7 w-7 text-muted-foreground" strokeWidth={1.5} />
                 </div>
                 <p className="text-base leading-relaxed text-foreground">{t("fees.pendingFinance")}</p>
                 <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
@@ -177,7 +176,7 @@ const FeesPage = () => {
                       <article className="bg-card border border-border overflow-hidden hover:shadow-lg transition-shadow group">
                         <div className="flex items-center gap-3 border-b border-border/80 bg-muted/40 px-5 py-4 sm:px-6">
                           <div className="flex h-10 w-10 shrink-0 items-center justify-center bg-primary/10 text-primary">
-                            <GraduationCap className="h-5 w-5" strokeWidth={1.75} />
+                            <AcademicCapIcon className="h-5 w-5" strokeWidth={1.75} />
                           </div>
                           <h2 className="min-w-0 flex-1 text-base font-semibold leading-snug text-foreground sm:text-lg">
                             {faculty}
@@ -221,7 +220,7 @@ const FeesPage = () => {
                   <div className="mt-6 flex flex-wrap justify-center gap-3">
                     <Link to="/admission">
                       <Button className="gap-2">
-                        <GraduationCap className="h-4 w-4" />
+                        <AcademicCapIcon className="h-4 w-4" />
                         {t("fees.ctaRegister")}
                       </Button>
                     </Link>

@@ -1,4 +1,4 @@
-import { User, Mail, Linkedin } from "lucide-react";
+import { UserIcon, EnvelopeIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 import { usePersonnel } from "@/hooks/useSupabaseData";
 import AnimatedSection from "./AnimatedSection";
@@ -40,7 +40,7 @@ const PersonnelSection = () => {
                     <img src={p.photo_url} alt={p.name} className="w-full h-full object-contain bg-muted" />
                   ) : (
                     <div className="w-full h-full bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center">
-                      <User className="w-10 h-10 sm:w-12 sm:h-12 text-primary/60" />
+                      <UserIcon className="w-10 h-10 sm:w-12 sm:h-12 text-primary/60" />
                     </div>
                   )}
                 </div>
@@ -51,8 +51,7 @@ const PersonnelSection = () => {
                   {p.role}
                 </p>
                 <div className="flex items-center justify-center gap-2 mt-1.5">
-                  {p.email && <Mail className="w-3 h-3 text-muted-foreground" />}
-                  {p.linkedin_url && <Linkedin className="w-3 h-3 text-muted-foreground" />}
+                  {p.email && <EnvelopeIcon className="w-3 h-3 text-muted-foreground" />}
                 </div>
               </Link>
             </AnimatedSection>

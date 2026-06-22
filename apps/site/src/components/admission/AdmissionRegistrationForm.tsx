@@ -13,7 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "sonner";
-import { ArrowLeft, ArrowRight, Check, Upload, User, BookOpen, FileText, Camera } from "lucide-react";
+import { ArrowLeftIcon, ArrowRightIcon, CheckIcon, ArrowUpTrayIcon, UserIcon, BookOpenIcon, DocumentIcon, CameraIcon } from "@heroicons/react/24/outline";
 import { cn } from "@/lib/utils";
 import heroCampusBg from "@/assets/hero-bg.jpg";
 import { supabase } from "@/integrations/supabase/client";
@@ -129,9 +129,9 @@ async function uploadAdmissionFile(
 }
 
 const steps = [
-  { label: "Identité", title: "Identité personnelle", icon: User },
-  { label: "Parcours Scolaire", title: "Parcours Scolaire", icon: BookOpen },
-  { label: "Documents", title: "Documents", icon: FileText },
+  { label: "Identité", title: "Identité personnelle", icon: UserIcon },
+  { label: "Parcours Scolaire", title: "Parcours Scolaire", icon: BookOpenIcon },
+  { label: "Documents", title: "Documents", icon: DocumentIcon },
 ];
 
 type FormState = {
@@ -173,11 +173,11 @@ const AdmissionRegistrationForm = () => {
   const [step, setStep] = useState(0);
   const [submitting, setSubmitting] = useState(false);
   const [form, setForm] = useState<FormState>(initialForm);
-  const [photoFile, setPhotoFile] = useState<File | null>(null);
+  const [photoFile, setPhotoFile] = useState<DocumentIcon | null>(null);
   const [photoPreview, setPhotoPreview] = useState<string | null>(null);
-  const [diplomeFile, setDiplomeFile] = useState<File | null>(null);
-  const [bulletinFile, setBulletinFile] = useState<File | null>(null);
-  const [attestationFile, setAttestationFile] = useState<File | null>(null);
+  const [diplomeFile, setDiplomeFile] = useState<DocumentIcon | null>(null);
+  const [bulletinFile, setBulletinFile] = useState<DocumentIcon | null>(null);
+  const [attestationFile, setAttestationFile] = useState<DocumentIcon | null>(null);
 
   const selectedFaculty = ADMISSION_FACULTIES.find((f) => f.slug === form.faculteSlug);
   const update = (key: keyof FormState, value: string) =>
@@ -350,7 +350,7 @@ const AdmissionRegistrationForm = () => {
                     )}
                     {isCompleted ? (
                       <div className="relative">
-                        <Check className="h-6 w-6 sm:h-5 sm:w-5" />
+                        <CheckIcon className="h-6 w-6 sm:h-5 sm:w-5" />
                         <div className="absolute -top-1 -right-1 h-3 w-3 bg-green-400 rounded-full border-2 border-white"></div>
                       </div>
                     ) : (
@@ -412,9 +412,9 @@ const AdmissionRegistrationForm = () => {
             {step === 0 && (
               <div className="grid gap-3.5 sm:gap-4 sm:grid-cols-2 xl:grid-cols-2">
                 <div className="space-y-2">
-                  <Label>
+                  <TagIcon>
                     Nom <span className="text-destructive">*</span>
-                  </Label>
+                  </TagIcon>
                   <Input
                     value={form.nom}
                     onChange={(e) => update("nom", e.target.value)}
@@ -422,9 +422,9 @@ const AdmissionRegistrationForm = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label>
+                  <TagIcon>
                     Postnom <span className="text-destructive">*</span>
-                  </Label>
+                  </TagIcon>
                   <Input
                     value={form.postnom}
                     onChange={(e) => update("postnom", e.target.value)}
@@ -432,9 +432,9 @@ const AdmissionRegistrationForm = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label>
+                  <TagIcon>
                     Prénom <span className="text-destructive">*</span>
-                  </Label>
+                  </TagIcon>
                   <Input
                     value={form.prenom}
                     onChange={(e) => update("prenom", e.target.value)}
@@ -442,9 +442,9 @@ const AdmissionRegistrationForm = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label>
+                  <TagIcon>
                     Sexe <span className="text-destructive">*</span>
-                  </Label>
+                  </TagIcon>
                   <Select value={form.sexe} onValueChange={(v) => update("sexe", v)}>
                     <SelectTrigger>
                       <SelectValue placeholder="Choisir" />
@@ -456,9 +456,9 @@ const AdmissionRegistrationForm = () => {
                   </Select>
                 </div>
                 <div className="space-y-2">
-                  <Label>
+                  <TagIcon>
                     Date de naissance <span className="text-destructive">*</span>
-                  </Label>
+                  </TagIcon>
                   <Input
                     type="date"
                     value={form.date_naissance}
@@ -466,9 +466,9 @@ const AdmissionRegistrationForm = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label>
+                  <TagIcon>
                     Lieu de naissance <span className="text-destructive">*</span>
-                  </Label>
+                  </TagIcon>
                   <Input
                     value={form.lieu_naissance}
                     onChange={(e) => update("lieu_naissance", e.target.value)}
@@ -476,9 +476,9 @@ const AdmissionRegistrationForm = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label>
+                  <TagIcon>
                     Nationalité <span className="text-destructive">*</span>
-                  </Label>
+                  </TagIcon>
                   <Select
                     value={
                       isValidAdmissionNationalite(form.nationalite)
@@ -500,9 +500,9 @@ const AdmissionRegistrationForm = () => {
                   </Select>
                 </div>
                 <div className="space-y-2">
-                  <Label>
+                  <TagIcon>
                     Téléphone <span className="text-destructive">*</span>
-                  </Label>
+                  </TagIcon>
                   <Input
                     value={form.telephone}
                     onChange={(e) => update("telephone", e.target.value)}
@@ -510,9 +510,9 @@ const AdmissionRegistrationForm = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label>
+                  <TagIcon>
                     Email <span className="text-destructive">*</span>
-                  </Label>
+                  </TagIcon>
                   <Input
                     type="email"
                     value={form.email}
@@ -521,9 +521,9 @@ const AdmissionRegistrationForm = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label>
+                  <TagIcon>
                     Adresse <span className="text-destructive">*</span>
-                  </Label>
+                  </TagIcon>
                   <Input
                     value={form.adresse}
                     onChange={(e) => update("adresse", e.target.value)}
@@ -536,9 +536,9 @@ const AdmissionRegistrationForm = () => {
             {step === 1 && (
               <div className="grid gap-5 sm:grid-cols-2 max-w-4xl">
                 <div className="sm:col-span-2 space-y-2">
-                  <Label>
+                  <TagIcon>
                     Faculté <span className="text-destructive">*</span>
-                  </Label>
+                  </TagIcon>
                   <Select
                     value={form.faculteSlug}
                     onValueChange={(v) => {
@@ -558,9 +558,9 @@ const AdmissionRegistrationForm = () => {
                   </Select>
                 </div>
                 <div className="sm:col-span-2 space-y-2">
-                  <Label>
+                  <TagIcon>
                     Filière / programme <span className="text-destructive">*</span>
-                  </Label>
+                  </TagIcon>
                   <Select
                     value={form.filiere}
                     onValueChange={(v) => update("filiere", v)}
@@ -583,9 +583,9 @@ const AdmissionRegistrationForm = () => {
                   </Select>
                 </div>
                 <div className="space-y-2">
-                  <Label>
+                  <TagIcon>
                     Promotion <span className="text-destructive">*</span>
-                  </Label>
+                  </TagIcon>
                   <Select value={form.promotion} onValueChange={(v) => update("promotion", v)}>
                     <SelectTrigger>
                       <SelectValue placeholder="Choisir" />
@@ -600,7 +600,7 @@ const AdmissionRegistrationForm = () => {
                   </Select>
                 </div>
                 <div className="space-y-2">
-                  <Label>Année académique</Label>
+                  <TagIcon>Année académique</TagIcon>
                   <Input
                     value={form.annee_academique}
                     onChange={(e) => update("annee_academique", e.target.value)}
@@ -612,20 +612,20 @@ const AdmissionRegistrationForm = () => {
             {step === 2 && (
               <div className="space-y-5">
                 <p className="text-sm text-muted-foreground bg-muted/50 p-3.5 rounded-xl flex items-start gap-3 leading-relaxed">
-                  <Camera className="h-5 w-5 shrink-0 text-primary mt-0.5" aria-hidden />
+                  <CameraIcon className="h-5 w-5 shrink-0 text-primary mt-0.5" aria-hidden />
                   <span>
                     La photo passeport est <strong>obligatoire</strong>. Les autres documents ci-dessous sont facultatifs ;
                     vous pouvez les ajouter plus tard si besoin.
                   </span>
                 </p>
                 <div className="space-y-2">
-                  <Label>
+                  <TagIcon>
                     Photo passeport <span className="text-destructive">*</span>
-                  </Label>
+                  </TagIcon>
                   <div className="flex flex-col items-stretch gap-4 sm:flex-row sm:flex-wrap sm:items-start">
                     <div className="min-w-0 w-full flex-1 sm:min-w-[200px]">
                       <label className="flex min-h-[8.5rem] cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-primary/30 bg-primary/5 px-4 py-6 transition-colors active:bg-primary/15 hover:bg-primary/10 sm:min-h-[7rem]">
-                        <Upload className="mb-2 h-7 w-7 text-primary/60 sm:h-6 sm:w-6" aria-hidden />
+                        <ArrowUpTrayIcon className="mb-2 h-7 w-7 text-primary/60 sm:h-6 sm:w-6" aria-hidden />
                         <span className="text-center text-xs text-muted-foreground sm:text-xs">
                           Appuyez pour choisir une photo
                         </span>
@@ -647,7 +647,7 @@ const AdmissionRegistrationForm = () => {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label>Diplôme d&apos;État (PDF)</Label>
+                  <TagIcon>Diplôme d&apos;État (PDF)</TagIcon>
                   <Input
                     type="file"
                     accept=".pdf,application/pdf"
@@ -655,7 +655,7 @@ const AdmissionRegistrationForm = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label>Bulletin des 2 dernières années (PDF)</Label>
+                  <TagIcon>Bulletin des 2 dernières années (PDF)</TagIcon>
                   <Input
                     type="file"
                     accept=".pdf,application/pdf"
@@ -663,7 +663,7 @@ const AdmissionRegistrationForm = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label>Attestation de bonne conduite (PDF)</Label>
+                  <TagIcon>Attestation de bonne conduite (PDF)</TagIcon>
                   <Input
                     type="file"
                     accept=".pdf,application/pdf"
@@ -688,7 +688,7 @@ const AdmissionRegistrationForm = () => {
                   className="w-full touch-manipulation sm:w-auto"
                   onClick={() => setStep((s) => s - 1)}
                 >
-                  <ArrowLeft className="h-4 w-4 mr-1" /> Précédent
+                  <ArrowLeftIcon className="h-4 w-4 mr-1" /> Précédent
                 </Button>
               ) : null}
               {step < 2 ? (
@@ -699,7 +699,7 @@ const AdmissionRegistrationForm = () => {
                   disabled={!canProceed()}
                   size="lg"
                 >
-                  Suivant <ArrowRight className="h-4 w-4 ml-1" />
+                  Suivant <ArrowRightIcon className="h-4 w-4 ml-1" />
                 </Button>
               ) : (
                 <Button
@@ -710,7 +710,7 @@ const AdmissionRegistrationForm = () => {
                   size="lg"
                 >
                   {submitting ? "Envoi..." : "Soumettre l'inscription"}{" "}
-                  <Check className="h-4 w-4 ml-1" />
+                  <CheckIcon className="h-4 w-4 ml-1" />
                 </Button>
               )}
             </div>

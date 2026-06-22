@@ -1,4 +1,4 @@
-import { Film, PlayCircle } from "lucide-react";
+import { Film, PlayCircle } from "@heroicons/react/24/outline";
 import { useRef, useState } from "react";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
@@ -81,7 +81,7 @@ const VideosPage = () => {
                     </div>
                     <div className="space-y-1.5 p-3">
                       <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                        <PlayCircle className="h-3.5 w-3.5" aria-hidden />
+                        <PlayCircleIcon className="h-3.5 w-3.5" aria-hidden />
                         Vidéo locale
                       </p>
                       <div className="flex items-start justify-between gap-3">
@@ -109,7 +109,7 @@ const VideosPage = () => {
               </div>
             ) : (
               <div className="rounded-2xl border border-dashed border-border/80 bg-muted/20 py-20 text-center">
-                <Film className="mx-auto mb-4 h-16 w-16 text-muted-foreground/35" aria-hidden />
+                <FilmIcon className="mx-auto mb-4 h-16 w-16 text-muted-foreground/35" aria-hidden />
                 <p className="mx-auto max-w-md leading-relaxed text-muted-foreground">
                   Aucune vidéo publiée pour le moment.
                 </p>

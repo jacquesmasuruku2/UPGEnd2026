@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useId, useState, type MouseEvent } from "react";
 import { createPortal } from "react-dom";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ChevronLeftIcon, ChevronRightIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import type { Database } from "@/integrations/supabase/types";
 
 type GalleryRow = Database["public"]["Tables"]["gallery"]["Row"];
@@ -85,7 +85,7 @@ const GalleryLightbox = ({ open, items, index, onClose, onIndexChange }: Gallery
     >
       <div className="upg-gallery-lightbox__panel" onClick={(e) => e.stopPropagation()}>
         <button type="button" className="upg-gallery-lightbox__close" onClick={onClose} aria-label="Fermer">
-          <X className="h-7 w-7" strokeWidth={2} aria-hidden />
+          <XMarkIcon className="h-7 w-7" strokeWidth={2} aria-hidden />
         </button>
 
         <figure className="upg-gallery-lightbox__figure">
@@ -119,7 +119,7 @@ const GalleryLightbox = ({ open, items, index, onClose, onIndexChange }: Gallery
             }}
             aria-label="Image précédente"
           >
-            <ChevronLeft className="h-10 w-10" strokeWidth={2} aria-hidden />
+            <ChevronLeftIcon className="h-10 w-10" strokeWidth={2} aria-hidden />
           </button>
           <button
             type="button"
@@ -130,7 +130,7 @@ const GalleryLightbox = ({ open, items, index, onClose, onIndexChange }: Gallery
             }}
             aria-label="Image suivante"
           >
-            <ChevronRight className="h-10 w-10" strokeWidth={2} aria-hidden />
+            <ChevronRightIcon className="h-10 w-10" strokeWidth={2} aria-hidden />
           </button>
         </>
       ) : null}

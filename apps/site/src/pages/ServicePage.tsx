@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import Layout from "@/components/Layout";
 import RichContent from "@/components/RichContent";
-import { ChevronRight, Mail, FileText, ExternalLink } from "lucide-react";
+import { ChevronRightIcon, EnvelopeIcon, DocumentIcon, ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 
 const useServices = () =>
   useQuery({
@@ -92,7 +92,7 @@ const ServicePage = () => {
                           : "text-gray-500 hover:text-gray-700"
                       }`}
                     >
-                      <FileText className="w-3.5 h-3.5" />
+                      <DocumentIcon className="w-3.5 h-3.5" />
                       Présentation service
                     </button>
                     <button
@@ -103,7 +103,7 @@ const ServicePage = () => {
                           : "text-gray-500 hover:text-gray-700"
                       }`}
                     >
-                      <ExternalLink className="w-3.5 h-3.5" />
+                      <ArrowTopRightOnSquareIcon className="w-3.5 h-3.5" />
                       Répertoires des opportunités
                     </button>
                   </div>
@@ -134,7 +134,7 @@ const ServicePage = () => {
                       {service.contact_email && (
                         <div className="mt-8 p-4 bg-muted/50 border border-border rounded-lg flex items-center gap-3">
                           <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                            <Mail className="w-5 h-5 text-primary" />
+                            <EnvelopeIcon className="w-5 h-5 text-primary" />
                           </div>
                           <div>
                             <p className="text-xs text-muted-foreground uppercase tracking-wide font-medium">Contact</p>
@@ -169,8 +169,7 @@ const ServicePage = () => {
                     {(allServices || []).map((s: any) => {
                       const isActive = s.slug === slug;
                       return (
-                        <Link
-                          key={s.id}
+                        <Link                           key={s.id}
                           to={`/service/${s.slug}`}
                           className={`flex items-center gap-1.5 py-2 text-xs border-b border-dashed border-gray-300 transition-colors ${
                             isActive

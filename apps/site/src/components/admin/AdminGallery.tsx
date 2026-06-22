@@ -3,7 +3,7 @@ import { useGallery, useUpsertGallery, useDeleteGallery } from "@/hooks/useSupab
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import ImageUpload from "./ImageUpload";
-import { Plus, Trash2, Save, X } from "lucide-react";
+import { PlusIcon, TrashIcon, BookmarkIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 interface FormData {
   id?: string;
@@ -34,7 +34,7 @@ const AdminGallery = () => {
       <div className="flex justify-between items-center">
         <h3 className="text-lg font-bold text-foreground">Galerie ({items?.length || 0})</h3>
         <Button size="sm" onClick={() => setEditing(empty)}>
-          <Plus className="w-4 h-4 mr-1" /> Ajouter
+          <PlusIcon className="w-4 h-4 mr-1" /> Ajouter
         </Button>
       </div>
 
@@ -48,10 +48,10 @@ const AdminGallery = () => {
           <ImageUpload value={editing.image_url} onChange={(url) => setEditing({ ...editing, image_url: url })} folder="gallery" />
           <div className="flex gap-2">
             <Button size="sm" onClick={handleSave} disabled={upsert.isPending}>
-              <Save className="w-4 h-4 mr-1" /> Sauvegarder
+              <BookmarkIcon className="w-4 h-4 mr-1" /> Sauvegarder
             </Button>
             <Button size="sm" variant="outline" onClick={() => setEditing(null)}>
-              <X className="w-4 h-4 mr-1" /> Annuler
+              <XMarkIcon className="w-4 h-4 mr-1" /> Annuler
             </Button>
           </div>
         </div>
@@ -73,7 +73,7 @@ const AdminGallery = () => {
               className="absolute top-1 right-1 opacity-0 group-hover:opacity-100 transition-opacity w-6 h-6"
               onClick={() => remove.mutate(g.id)}
             >
-              <Trash2 className="w-3 h-3" />
+              <TrashIcon className="w-3 h-3" />
             </Button>
           </div>
         ))}

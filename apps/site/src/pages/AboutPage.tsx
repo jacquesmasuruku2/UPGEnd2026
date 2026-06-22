@@ -1,13 +1,13 @@
 import Layout from "@/components/Layout";
-import { GraduationCap, Users, Lightbulb, Globe } from "lucide-react";
+import { AcademicCapIcon, UsersIcon, LightBulbIcon, GlobeAltIcon } from "@heroicons/react/24/outline";
 import formationImg from "@/assets/formation.jpg";
 import AnimatedSection from "@/components/AnimatedSection";
 
 const values = [
-  { icon: GraduationCap, label: "Excellence académique", desc: "Un enseignement rigoureux aligné sur les standards internationaux." },
-  { icon: Lightbulb, label: "Innovation", desc: "La technologie et la créativité au cœur de chaque programme." },
-  { icon: Users, label: "Inclusivité", desc: "Un accès facilité à l'éducation de qualité pour tous." },
-  { icon: Globe, label: "Impact local", desc: "Former des leaders qui transforment leur communauté." },
+  { icon: AcademicCapIcon, label: "Excellence académique", desc: "Un enseignement rigoureux aligné sur les standards internationaux." },
+  { icon: LightBulbIcon, label: "Innovation", desc: "La technologie et la créativité au cœur de chaque programme." },
+  { icon: UsersIcon, label: "Inclusivité", desc: "Un accès facilité à l'éducation de qualité pour tous." },
+  { icon: GlobeAltIcon, label: "Impact local", desc: "Former des leaders qui transforment leur communauté." },
 ];
 
 const AboutPage = () => {

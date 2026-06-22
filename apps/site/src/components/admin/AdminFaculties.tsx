@@ -3,7 +3,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Pencil, Trash2, Plus, X } from "lucide-react";
+import { PencilIcon, TrashIcon, PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useAllFacultyContent, useUpsertFacultyContent, useDeleteFacultyContent } from "@/hooks/useSupabaseData";
 import { FACULTY_DEFAULT_DEPARTMENTS } from "@/config/facultyDefaults";
 import ImageUpload from "./ImageUpload";
@@ -107,7 +107,7 @@ const AdminFaculties = () => {
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-xl font-bold text-foreground">Gestion des Facultés</h2>
         <Button onClick={startNew} size="sm" className="gap-1">
-          <Plus className="w-4 h-4" /> Ajouter
+          <PlusIcon className="w-4 h-4" /> Ajouter
         </Button>
       </div>
 
@@ -138,7 +138,7 @@ const AdminFaculties = () => {
                 <span key={i} className="bg-primary/10 text-primary text-xs px-2 py-1 rounded-full flex items-center gap-1 max-w-full">
                   <span className="break-words">{d}</span>
                   <button type="button" onClick={() => removeDept(i)} className="hover:text-destructive shrink-0">
-                    <X className="w-3 h-3" />
+                    <XMarkIcon className="w-3 h-3" />
                   </button>
                 </span>
               ))}
@@ -212,10 +212,10 @@ const AdminFaculties = () => {
             </div>
             <div className="flex gap-2">
               <Button variant="ghost" size="sm" onClick={() => startEdit(f)}>
-                <Pencil className="w-4 h-4" />
+                <PencilIcon className="w-4 h-4" />
               </Button>
               <Button variant="ghost" size="sm" className="text-destructive" onClick={() => remove.mutate(f.id)}>
-                <Trash2 className="w-4 h-4" />
+                <TrashIcon className="w-4 h-4" />
               </Button>
             </div>
           </div>

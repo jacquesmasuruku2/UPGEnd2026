@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import ImageUpload from "./ImageUpload";
-import { Plus, Pencil, Trash2, Save, X, Linkedin, Mail } from "lucide-react";
+import { PlusIcon, PencilIcon, TrashIcon, BookmarkIcon, XMarkIcon, EnvelopeIcon } from "@heroicons/react/24/outline";
 
 interface FormData {
   id?: string;
@@ -37,7 +37,7 @@ const AdminPersonnel = () => {
       <div className="flex justify-between items-center">
         <h3 className="text-lg font-bold text-foreground">Personnel ({items?.length || 0})</h3>
         <Button size="sm" onClick={() => setEditing(empty)}>
-          <Plus className="w-4 h-4 mr-1" /> Ajouter
+          <PlusIcon className="w-4 h-4 mr-1" /> Ajouter
         </Button>
       </div>
 
@@ -49,11 +49,10 @@ const AdminPersonnel = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              <EnvelopeIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <Input placeholder="Email" value={editing.email} onChange={(e) => setEditing({ ...editing, email: e.target.value })} className="pl-10" />
             </div>
             <div className="relative">
-              <Linkedin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <Input placeholder="Lien LinkedIn" value={editing.linkedin_url} onChange={(e) => setEditing({ ...editing, linkedin_url: e.target.value })} className="pl-10" />
             </div>
           </div>
@@ -62,10 +61,10 @@ const AdminPersonnel = () => {
           <Input type="number" placeholder="Ordre d'affichage" value={editing.display_order} onChange={(e) => setEditing({ ...editing, display_order: Number(e.target.value) })} className="w-32" />
           <div className="flex gap-2">
             <Button size="sm" onClick={handleSave} disabled={upsert.isPending}>
-              <Save className="w-4 h-4 mr-1" /> Sauvegarder
+              <BookmarkIcon className="w-4 h-4 mr-1" /> Sauvegarder
             </Button>
             <Button size="sm" variant="outline" onClick={() => setEditing(null)}>
-              <X className="w-4 h-4 mr-1" /> Annuler
+              <XMarkIcon className="w-4 h-4 mr-1" /> Annuler
             </Button>
           </div>
         </div>
@@ -92,10 +91,10 @@ const AdminPersonnel = () => {
                 id: p.id, name: p.name, role: p.role, bio: p.bio || "", photo_url: p.photo_url || "",
                 display_order: p.display_order || 0, email: (p as any).email || "", linkedin_url: (p as any).linkedin_url || ""
               })}>
-                <Pencil className="w-4 h-4" />
+                <PencilIcon className="w-4 h-4" />
               </Button>
               <Button size="icon" variant="ghost" className="text-destructive" onClick={() => remove.mutate(p.id)}>
-                <Trash2 className="w-4 h-4" />
+                <TrashIcon className="w-4 h-4" />
               </Button>
             </div>
           </div>

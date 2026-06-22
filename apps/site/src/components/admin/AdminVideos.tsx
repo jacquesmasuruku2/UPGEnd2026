@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Plus, Save, Trash2, X } from "lucide-react";
+import { PlusIcon, BookmarkIcon, TrashIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import ImageUpload from "./ImageUpload";
@@ -45,7 +45,7 @@ const AdminVideos = () => {
       <div className="flex items-center justify-between">
         <h3 className="text-lg font-bold text-foreground">Vidéos ({items?.length || 0})</h3>
         <Button size="sm" onClick={() => setEditing(empty)}>
-          <Plus className="mr-1 h-4 w-4" /> Ajouter
+          <PlusIcon className="mr-1 h-4 w-4" /> Ajouter
         </Button>
       </div>
 
@@ -104,10 +104,10 @@ const AdminVideos = () => {
 
           <div className="flex gap-2">
             <Button size="sm" onClick={handleSave} disabled={upsert.isPending}>
-              <Save className="mr-1 h-4 w-4" /> Sauvegarder
+              <BookmarkIcon className="mr-1 h-4 w-4" /> Sauvegarder
             </Button>
             <Button size="sm" variant="outline" onClick={() => setEditing(null)}>
-              <X className="mr-1 h-4 w-4" /> Annuler
+              <XMarkIcon className="mr-1 h-4 w-4" /> Annuler
             </Button>
           </div>
         </div>
@@ -156,7 +156,7 @@ const AdminVideos = () => {
                     className="h-8 w-8"
                     onClick={() => remove.mutate(v.id)}
                   >
-                    <Trash2 className="h-3.5 w-3.5" />
+                    <TrashIcon className="h-3.5 w-3.5" />
                   </Button>
                 </div>
               </div>

@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
-import { Mail, Phone, Languages, Banknote, GraduationCap } from "lucide-react";
+import { EnvelopeIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { cn } from "@/lib/utils";
@@ -32,8 +32,8 @@ const TopBar = () => {
 
   const promoItems = useMemo(
     () => [
-      { to: "/frais" as const, label: t("topbar.fees"), Icon: Banknote },
-      { to: "/admission" as const, label: t("topbar.inscription"), Icon: GraduationCap },
+      { to: "/frais" as const, label: t("topbar.fees"), Icon: null },
+      { to: "/admission" as const, label: t("topbar.inscription"), Icon: null },
     ],
     [t],
   );
@@ -204,9 +204,11 @@ const TopBar = () => {
                   className="invisible col-start-1 row-start-1 flex w-full min-w-0 max-w-full items-center gap-1.5 whitespace-nowrap rounded-md px-1.5 py-1 sm:px-1 sm:py-0.5"
                   aria-hidden
                 >
-                  <span className="inline-flex shrink-0 rounded-md bg-white/15 p-0.5 ring-1 ring-white/25">
-                    <Icon className="h-4 w-4 text-white sm:h-3.5 sm:w-3.5 md:h-4 md:w-4" strokeWidth={2} />
-                  </span>
+                  {Icon && (
+                    <span className="inline-flex shrink-0 rounded-md bg-white/15 p-0.5 ring-1 ring-white/25">
+                      <Icon className="h-4 w-4 text-white sm:h-3.5 sm:w-3.5 md:h-4 md:w-4" strokeWidth={2} />
+                    </span>
+                  )}
                   <span className="text-sm font-medium">{item.label}</span>
                 </span>
               );
@@ -216,8 +218,7 @@ const TopBar = () => {
                 const active = promoSlot === i;
                 const Icon = item.Icon;
                 return (
-                  <Link
-                    key={item.to}
+                  <Link                     key={item.to}
                     to={item.to}
                     title={item.label}
                     className={cn(
@@ -229,15 +230,17 @@ const TopBar = () => {
                         : "pointer-events-none z-0 translate-x-2 opacity-0",
                     )}
                   >
-                    <span
-                      className={cn(
-                        "inline-flex shrink-0 rounded-md bg-white/15 p-0.5 ring-1 ring-white/25 transition-transform duration-700",
-                        active ? "scale-100" : "scale-90",
-                      )}
-                      aria-hidden
-                    >
-                      <Icon className="h-4 w-4 text-white sm:h-3.5 sm:w-3.5 md:h-4 md:w-4" strokeWidth={2} />
-                    </span>
+                    {Icon && (
+                      <span
+                        className={cn(
+                          "inline-flex shrink-0 rounded-md bg-white/15 p-0.5 ring-1 ring-white/25 transition-transform duration-700",
+                          active ? "scale-100" : "scale-90",
+                        )}
+                        aria-hidden
+                      >
+                        <Icon className="h-4 w-4 text-white sm:h-3.5 sm:w-3.5 md:h-4 md:w-4" strokeWidth={2} />
+                      </span>
+                    )}
                     <span className="relative inline-block min-w-0 max-w-full shrink text-sm font-medium underline-offset-2 transition-colors hover:underline">
                       <span className="block max-w-full truncate">{item.label}</span>
                       {active && (
@@ -256,8 +259,7 @@ const TopBar = () => {
             </div>
           </div>
           <div className="hidden h-4 w-px shrink-0 bg-white/30 md:block" aria-hidden />
-          <Link
-            to="/bibliotheque"
+          <Link             to="/bibliotheque"
             className="hover:underline whitespace-nowrap hidden max-w-[10rem] truncate md:inline-block lg:max-w-none"
             title={t("topbar.library")}
           >
@@ -266,8 +268,7 @@ const TopBar = () => {
           <span className="opacity-40 hidden md:inline" aria-hidden>
             |
           </span>
-          <Link
-            to="/systeme-academique?mode=student"
+          <Link             to="/systeme-academique?mode=student"
             className="hover:underline whitespace-nowrap hidden shrink-0 md:inline"
           >
             {t("topbar.login")}
@@ -275,7 +276,6 @@ const TopBar = () => {
         </div>
         <div className="flex shrink-0 flex-nowrap items-center justify-end gap-2 sm:gap-4">
           <div className="flex items-center gap-1.5 rounded-md border border-white/25 bg-white/10 px-2 py-1 h-8">
-            <Languages className="w-3.5 h-3.5 text-white/90 shrink-0" />
             <label htmlFor="topbar-language" className="sr-only">Choisir la langue</label>
             <select
               id="topbar-language"
@@ -296,7 +296,6 @@ const TopBar = () => {
             <div id="google_translate_element" className="google-translate-host" aria-hidden="true" />
           </div>
           <a href="tel:+16132612229" className="hidden sm:flex items-center gap-1 hover:underline">
-            <Phone className="w-3 h-3" />
             <span>+1 613-261-2229</span>
           </a>
           <a
@@ -322,7 +321,7 @@ const TopBar = () => {
             </svg>
           </a>
           <a href="mailto:info@upgoma.org" className="hidden sm:flex items-center gap-1 hover:underline">
-            <Mail className="w-3 h-3" />
+            <EnvelopeIcon className="w-3 h-3" />
             <span>info@upgoma.org</span>
           </a>
         </div>

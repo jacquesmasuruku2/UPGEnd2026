@@ -1,6 +1,6 @@
 import { useState, type MouseEvent } from "react";
 import { Link } from "react-router-dom";
-import { MapPin, Phone, Mail, Send, Loader2 } from "lucide-react";
+import { MapPinIcon, PhoneIcon, EnvelopeIcon, PaperAirplaneIcon, ArrowPathIcon } from "@heroicons/react/24/outline";
 import { LOGO_UPG_SRC } from "@/lib/brand";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -262,15 +262,15 @@ const FooterSection = () => {
             <div className="w-10 h-0.5 bg-upg-orange mb-4" />
             <ul className="space-y-0 text-white/60 text-sm">
               <li className="flex items-start gap-2 py-2 border-b border-dashed border-white/15">
-                <MapPin className="w-4 h-4 shrink-0 mt-0.5 text-upg-orange" />
+                <MapPinIcon className="w-4 h-4 shrink-0 mt-0.5 text-upg-orange" />
                 Goma, Quartier Lac Vert, Avenue Nyarutsiru, Avant entrée Buhimba
               </li>
               <li className="flex items-center gap-2 py-2 border-b border-dashed border-white/15">
-                <Phone className="w-4 h-4 shrink-0 text-upg-orange" />
+                <PhoneIcon className="w-4 h-4 shrink-0 text-upg-orange" />
                 +1 613-261-2229
               </li>
               <li className="flex items-center gap-2 py-2 border-b border-dashed border-white/15">
-                <Mail className="w-4 h-4 shrink-0 text-upg-orange" />
+                <EnvelopeIcon className="w-4 h-4 shrink-0 text-upg-orange" />
                 info@upgoma.org
               </li>
             </ul>
@@ -295,7 +295,7 @@ const FooterSection = () => {
                   className="bg-white/10 border-white/20 text-white placeholder:text-white/40 h-9 text-sm"
                 />
                 <Button type="submit" size="sm" className="bg-upg-orange text-white hover:bg-upg-orange/90 shrink-0" disabled={loading}>
-                  {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
+                  {loading ? <ArrowPathIcon className="w-4 h-4 animate-spin" /> : <PaperAirplaneIcon className="w-4 h-4" />}
                 </Button>
               </div>
             </form>

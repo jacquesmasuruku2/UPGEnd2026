@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Pencil, Trash2, Plus } from "lucide-react";
+import { PencilIcon, TrashIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { supabase } from "@/integrations/supabase/client";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import ImageUpload from "./ImageUpload";
@@ -68,7 +68,7 @@ const AdminServices = () => {
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-xl font-bold text-foreground">Gestion des Services</h2>
         <Button onClick={startNew} size="sm" className="gap-1">
-          <Plus className="w-4 h-4" /> Ajouter
+          <PlusIcon className="w-4 h-4" /> Ajouter
         </Button>
       </div>
 
@@ -112,10 +112,10 @@ const AdminServices = () => {
             </div>
             <div className="flex gap-2">
               <Button variant="ghost" size="sm" onClick={() => startEdit(s)}>
-                <Pencil className="w-4 h-4" />
+                <PencilIcon className="w-4 h-4" />
               </Button>
               <Button variant="ghost" size="sm" className="text-destructive" onClick={() => remove.mutate(s.id)}>
-                <Trash2 className="w-4 h-4" />
+                <TrashIcon className="w-4 h-4" />
               </Button>
             </div>
           </div>

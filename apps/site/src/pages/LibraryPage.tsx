@@ -1,7 +1,7 @@
 import Layout from "@/components/Layout";
 import { useLibraryBooks } from "@/hooks/useSupabaseData";
 import AnimatedSection from "@/components/AnimatedSection";
-import { BookOpen, Download, Search } from "lucide-react";
+import { BookOpen, ArrowDownTray, MagnifyingGlass } from "@heroicons/react/24/outline";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -32,7 +32,7 @@ const LibraryPage = () => {
 
           <div className="max-w-md mx-auto mb-10">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              <MagnifyingGlassIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <Input
                 placeholder="Rechercher un livre..."
                 value={search}
@@ -44,7 +44,7 @@ const LibraryPage = () => {
 
           {filtered.length === 0 ? (
             <div className="text-center py-16">
-              <BookOpen className="w-16 h-16 mx-auto text-muted-foreground mb-4" />
+              <BookOpenIcon className="w-16 h-16 mx-auto text-muted-foreground mb-4" />
               <p className="text-muted-foreground">
                 {books && books.length === 0
                   ? "La bibliothèque sera bientôt disponible."
@@ -66,7 +66,7 @@ const LibraryPage = () => {
                       </div>
                     ) : (
                       <div className="w-full h-56 bg-secondary flex items-center justify-center">
-                        <BookOpen className="w-12 h-12 text-muted-foreground" />
+                        <BookOpenIcon className="w-12 h-12 text-muted-foreground" />
                       </div>
                     )}
                     <div className="p-4">
@@ -93,7 +93,7 @@ const LibraryPage = () => {
                             size="sm"
                             className="w-full mt-3 gap-2 border-primary text-primary hover:bg-primary/5"
                           >
-                            <Download className="w-4 h-4" />
+                            <ArrowDownTrayIcon className="w-4 h-4" />
                             Télécharger PDF
                           </Button>
                         </a>

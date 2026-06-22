@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
-import { Banknote, FileCheck, ArrowRight } from "lucide-react";
+import { BanknotesIcon, DocumentCheckIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 
 const tools = [
   {
-    icon: Banknote,
+    icon: BanknotesIcon,
     title: "Frais académiques",
     description: "Consultez les barèmes des frais de scolarité par faculté et par cycle.",
     href: "/frais",
   },
   {
-    icon: FileCheck,
+    icon: DocumentCheckIcon,
     title: "Grille de délibération",
     description: "Accédez à la grille de délibération via votre compte étudiant.",
     href: "/grille-deliberation",
@@ -39,8 +39,7 @@ const ValvePage = () => {
           <AnimatedSection>
             <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
               {tools.map((tool) => (
-                <Link
-                  key={tool.href}
+                <Link                   key={tool.href}
                   to={tool.href}
                   className="group border border-border p-8 flex flex-col justify-between hover:border-primary/50 transition-colors"
                 >
@@ -57,7 +56,7 @@ const ValvePage = () => {
                   </div>
                   <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:text-primary/80 transition-colors">
                     Accéder
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRightIcon className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </div>
                 </Link>
               ))}

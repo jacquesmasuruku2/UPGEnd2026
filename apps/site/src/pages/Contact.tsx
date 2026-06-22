@@ -3,7 +3,7 @@ import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { MapPin, Phone, Mail, Navigation } from "lucide-react";
+import { MapPinIcon, PhoneIcon, Envelope, Map } from "@heroicons/react/24/outline";
 import { toast } from "sonner";
 import { useLanguage } from "@/i18n/LanguageContext";
 
@@ -67,7 +67,7 @@ const Contact = () => {
             <div className="space-y-6">
               <div className="bg-card border border-border p-6 space-y-4">
                 <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                  <MapPinIcon className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                   <div>
                     <h4 className="font-bold text-foreground">Adresse</h4>
                     <p className="text-muted-foreground text-sm">
@@ -76,7 +76,7 @@ const Contact = () => {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <Phone className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                  <PhoneIcon className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                   <div>
                     <h4 className="font-bold text-foreground">Téléphone</h4>
                     <p className="text-muted-foreground text-sm">+243 977 831 973</p>
@@ -84,7 +84,7 @@ const Contact = () => {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <Mail className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                  <EnvelopeIcon className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                   <div>
                     <h4 className="font-bold text-foreground">Email</h4>
                     <p className="text-muted-foreground text-sm">info@upgoma.org</p>
@@ -141,7 +141,7 @@ const Contact = () => {
                 className="inline-flex items-center gap-2 w-full"
               >
                 <Button variant="outline" className="w-full gap-2 border-primary text-primary hover:bg-primary/5">
-                  <Navigation className="w-4 h-4" />
+                  <MapIcon className="w-4 h-4" />
                   Suivre l'itinéraire sur Google Maps
                 </Button>
               </a>

@@ -1,12 +1,12 @@
-import { Users, Building, BookOpen } from "lucide-react";
+import { UsersIcon, BuildingOffice2Icon, BookOpenIcon } from "@heroicons/react/24/outline";
 import heroBg from "@/assets/hero-bg.jpg";
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
 const stats = [
-  { icon: Users, value: 350, suffix: "+", label: "Étudiants" },
-  { icon: Building, value: 7, suffix: "", label: "Facultés" },
-  { icon: BookOpen, value: 25, suffix: "+", label: "Enseignants" },
+  { icon: UsersIcon, value: 350, suffix: "+", label: "Étudiants" },
+  { icon: BuildingOffice2Icon, value: 7, suffix: "", label: "Facultés" },
+  { icon: BookOpenIcon, value: 25, suffix: "+", label: "Enseignants" },
 ];
 
 const Counter = ({ target, suffix }: { target: number; suffix: string }) => {

@@ -1,7 +1,7 @@
 import Layout from "@/components/Layout";
 import RichContent from "@/components/RichContent";
 import SocialShareButtons from "@/components/SocialShareButtons";
-import { Calendar, Tag, User, ArrowLeft, Search, MessageCircle, Eye, Heart } from "lucide-react";
+import { CalendarIcon, TagIcon, UserIcon, ArrowLeftIcon, MagnifyingGlass, ChatBubbleLeft, EyeIcon, HeartIcon } from "@heroicons/react/24/outline";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -73,7 +73,7 @@ const CommentSection = ({ articleId }: { articleId: string }) => {
   return (
     <div className="mt-8 border-t border-border pt-8">
       <h3 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
-        <MessageCircle className="w-5 h-5 text-primary" />
+        <ChatBubbleLeftIcon className="w-5 h-5 text-primary" />
         Commentaires ({comments?.length || 0})
       </h3>
 
@@ -173,7 +173,7 @@ const BlogPage = () => {
         <section className="py-16 bg-background">
           <div className="container mx-auto px-4 max-w-3xl">
             <Button variant="ghost" className="mb-6 text-primary" onClick={() => setSelectedId(null)}>
-              <ArrowLeft className="w-4 h-4 mr-2" /> Retour aux articles
+              <ArrowLeftIcon className="w-4 h-4 mr-2" /> Retour aux articles
             </Button>
             <article className="bg-card border border-border overflow-hidden shadow-sm">
               {selectedArticle.image_url && (
@@ -190,17 +190,17 @@ const BlogPage = () => {
               <div className="p-6 sm:p-8">
                 <div className="flex flex-wrap items-center gap-4 mb-4 text-sm text-muted-foreground">
                   <span className="flex items-center gap-1">
-                    <Calendar className="w-4 h-4" />
+                    <CalendarIcon className="w-4 h-4" />
                     {format(new Date(selectedArticle.published_at || selectedArticle.created_at), "d MMM yyyy", { locale: fr })}
                   </span>
                   {selectedArticle.category && (
                     <span className="flex items-center gap-1 text-upg-orange">
-                      <Tag className="w-4 h-4" /> {selectedArticle.category}
+                      <TagIcon className="w-4 h-4" /> {selectedArticle.category}
                     </span>
                   )}
                   {selectedArticle.author && (
                     <span className="flex items-center gap-1">
-                      <User className="w-4 h-4" /> {selectedArticle.author}
+                      <UserIcon className="w-4 h-4" /> {selectedArticle.author}
                     </span>
                   )}
                 </div>
@@ -216,7 +216,7 @@ const BlogPage = () => {
 
                 <div className="mt-4 flex flex-wrap items-center gap-3 text-sm">
                   <span className="inline-flex items-center gap-1 rounded-full bg-muted px-3 py-1 text-muted-foreground">
-                    <Eye className="w-4 h-4" /> {selectedArticle.views_count ?? 0} vues
+                    <EyeIcon className="w-4 h-4" /> {selectedArticle.views_count ?? 0} vues
                   </span>
                   <Button
                     type="button"
@@ -232,7 +232,7 @@ const BlogPage = () => {
                       });
                     }}
                   >
-                    <Heart className={`w-4 h-4 mr-1 ${isLiked ? "fill-current" : ""}`} />
+                    <HeartIcon className={`w-4 h-4 mr-1 ${isLiked ? "fill-current" : ""}`} />
                     {selectedArticle.likes_count ?? 0} j'aime
                   </Button>
                 </div>
@@ -261,7 +261,7 @@ const BlogPage = () => {
 
           <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div className="relative w-full max-w-md">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              <MagnifyingGlassIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <Input
                 placeholder="Rechercher une actualité..."
                 value={search}

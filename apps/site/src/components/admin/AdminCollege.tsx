@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import ImageUpload from "./ImageUpload";
 import RichTextToolbar from "./RichTextToolbar";
-import { Plus, Pencil, Trash2, Save, X } from "lucide-react";
+import { PlusIcon, PencilIcon, TrashIcon, BookmarkIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 interface FormData {
   id?: string;
@@ -37,7 +37,7 @@ const AdminCollege = () => {
       <div className="flex justify-between items-center">
         <h3 className="text-lg font-bold text-foreground">Publications du Collège ({items?.length || 0})</h3>
         <Button size="sm" onClick={() => setEditing(empty)}>
-          <Plus className="w-4 h-4 mr-1" /> Ajouter
+          <PlusIcon className="w-4 h-4 mr-1" /> Ajouter
         </Button>
       </div>
 
@@ -74,10 +74,10 @@ const AdminCollege = () => {
           <ImageUpload value={editing.image_url} onChange={(url) => setEditing({ ...editing, image_url: url })} folder="college" />
           <div className="flex gap-2">
             <Button size="sm" onClick={handleSave} disabled={upsert.isPending}>
-              <Save className="w-4 h-4 mr-1" /> Sauvegarder
+              <BookmarkIcon className="w-4 h-4 mr-1" /> Sauvegarder
             </Button>
             <Button size="sm" variant="outline" onClick={() => setEditing(null)}>
-              <X className="w-4 h-4 mr-1" /> Annuler
+              <XMarkIcon className="w-4 h-4 mr-1" /> Annuler
             </Button>
           </div>
         </div>
@@ -92,10 +92,10 @@ const AdminCollege = () => {
             </div>
             <div className="flex gap-1 shrink-0">
               <Button size="icon" variant="ghost" onClick={() => setEditing({ id: p.id, title: p.title, content: p.content || "", author: p.author || "", image_url: p.image_url || "", published: p.published || false })}>
-                <Pencil className="w-4 h-4" />
+                <PencilIcon className="w-4 h-4" />
               </Button>
               <Button size="icon" variant="ghost" className="text-destructive" onClick={() => remove.mutate(p.id)}>
-                <Trash2 className="w-4 h-4" />
+                <TrashIcon className="w-4 h-4" />
               </Button>
             </div>
           </div>

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Pencil, Trash2, Plus } from "lucide-react";
+import { PencilIcon, TrashIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { usePartners, useUpsertPartner, useDeletePartner } from "@/hooks/useSupabaseData";
 import ImageUpload from "./ImageUpload";
 
@@ -47,14 +47,14 @@ const AdminPartners = () => {
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-xl font-bold text-foreground">Gestion des Partenaires</h2>
         <Button onClick={startNew} size="sm" className="gap-1">
-          <Plus className="w-4 h-4" /> Ajouter
+          <PlusIcon className="w-4 h-4" /> Ajouter
         </Button>
       </div>
 
       {editing && (
         <div className="bg-secondary border border-border rounded-lg p-4 mb-6 space-y-4">
           <div>
-            <Label htmlFor="partner-name">Nom du partenaire *</Label>
+            <TagIcon htmlFor="partner-name">Nom du partenaire *</TagIcon>
             <Input
               id="partner-name"
               placeholder="Ex: Université de Goma"
@@ -64,7 +64,7 @@ const AdminPartners = () => {
           </div>
 
           <div>
-            <Label htmlFor="partner-description">Description</Label>
+            <TagIcon htmlFor="partner-description">Description</TagIcon>
             <Textarea
               id="partner-description"
               placeholder="Description courte du partenaire..."
@@ -75,7 +75,7 @@ const AdminPartners = () => {
           </div>
 
           <div>
-            <Label htmlFor="partner-website">Site web</Label>
+            <TagIcon htmlFor="partner-website">Site web</TagIcon>
             <Input
               id="partner-website"
               type="url"
@@ -86,7 +86,7 @@ const AdminPartners = () => {
           </div>
 
           <div>
-            <Label htmlFor="partner-order">Ordre d'affichage</Label>
+            <TagIcon htmlFor="partner-order">Ordre d'affichage</TagIcon>
             <Input
               id="partner-order"
               type="number"
@@ -104,7 +104,7 @@ const AdminPartners = () => {
               onChange={(e) => setEditing({ ...editing, is_active: e.target.checked })}
               className="accent-blue-600"
             />
-            <Label htmlFor="partner-active" className="cursor-pointer">Partenaire actif</Label>
+            <TagIcon htmlFor="partner-active" className="cursor-pointer">Partenaire actif</TagIcon>
           </div>
 
           <ImageUpload
@@ -163,10 +163,10 @@ const AdminPartners = () => {
             </div>
             <div className="flex gap-2">
               <Button variant="ghost" size="sm" onClick={() => startEdit(partner)}>
-                <Pencil className="w-4 h-4" />
+                <PencilIcon className="w-4 h-4" />
               </Button>
               <Button variant="ghost" size="sm" className="text-destructive" onClick={() => remove.mutate(partner.id)}>
-                <Trash2 className="w-4 h-4" />
+                <TrashIcon className="w-4 h-4" />
               </Button>
             </div>
           </div>

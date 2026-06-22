@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Upload, X, Image } from "lucide-react";
+import { ArrowUpTrayIcon, XMarkIcon, PhotoIcon } from "@heroicons/react/24/outline";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { uploadImage } from "@/hooks/useSupabaseData";
@@ -44,7 +44,7 @@ const ImageUpload = ({ value, onChange, folder }: ImageUploadProps) => {
             onClick={() => onChange("")}
             className="absolute top-1 right-1 bg-destructive text-destructive-foreground rounded-full p-1"
           >
-            <X className="w-3 h-3" />
+            <XMarkIcon className="w-3 h-3" />
           </button>
         </div>
       )}
@@ -63,7 +63,7 @@ const ImageUpload = ({ value, onChange, folder }: ImageUploadProps) => {
           onClick={() => fileRef.current?.click()}
           disabled={uploading}
         >
-          <Upload className="w-4 h-4 mr-1" />
+          <ArrowUpTrayIcon className="w-4 h-4 mr-1" />
           {uploading ? "Upload..." : "Uploader"}
         </Button>
         <Input

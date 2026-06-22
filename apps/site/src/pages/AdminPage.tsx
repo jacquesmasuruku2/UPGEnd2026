@@ -1,34 +1,11 @@
 import { useState, useEffect, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-  Lock,
-  LogOut,
-  Mail,
-  ArrowRight,
-  ShieldAlert,
-  ArrowLeft,
-  Inbox,
-  Users,
-  Newspaper,
-  ImageIcon,
-  CalendarDays,
-  Banknote,
-  Building2,
-  BriefcaseBusiness,
-  Library,
-  GraduationCap,
-  UserCog,
-  Shield,
-  Video,
-  KeyRound,
-  Handshake,
-} from "lucide-react";
+import { LockClosedIcon, ArrowRightOnRectangleIcon, EnvelopeIcon, ArrowRightIcon, ExclamationTriangleIcon, ArrowLeftIcon, UsersIcon, NewspaperIcon, PhotoIcon, CalendarDaysIcon, BanknotesIcon, BuildingOfficeIcon, BriefcaseIcon, BookOpenIcon, AcademicCapIcon, UserIcon, ShieldCheckIcon, VideoCameraIcon, KeyIcon } from "@heroicons/react/24/outline";
 import { LOGO_UPG_SRC } from "@/lib/brand";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import type { Session } from "@supabase/supabase-js";
-import type { Tables } from "@/integrations/supabase/types";
 import { isEmailAllowedForAdminPortal } from "@/config/adminAuth";
 import { SITE_URL } from "@/config/seo";
 import AdminPersonnel from "@/components/admin/AdminPersonnel";
@@ -66,7 +43,12 @@ function toastMagicLinkSendFailure(err: unknown) {
 }
 
 const AdminPage = () => {
-  type UserRole = Tables<"user_roles">;
+  type UserRole = {
+    id?: string;
+    user_id: string;
+    role: string;
+    created_at?: string;
+  };
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState<boolean | null>(null);
@@ -361,7 +343,7 @@ const AdminPage = () => {
                 <img src={LOGO_UPG_SRC} alt="Logo UPG" className="w-full h-full object-cover" />
               </div>
               <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-[hsl(145,60%,45%)] border-4 border-[hsl(215,30%,8%)] flex items-center justify-center">
-                <Lock className="w-3 h-3 text-white" />
+                <LockClosedIcon className="w-3 h-3 text-white" />
               </div>
             </div>
           </div>
@@ -397,7 +379,7 @@ const AdminPage = () => {
                         : "text-[hsl(210,15%,55%)] hover:text-white"
                     }`}
                   >
-                    <KeyRound className="w-3.5 h-3.5" />
+                    <KeyIcon className="w-3.5 h-3.5" />
                     Mot de passe
                   </button>
                   <button
@@ -412,7 +394,7 @@ const AdminPage = () => {
                         : "text-[hsl(210,15%,55%)] hover:text-white"
                     }`}
                   >
-                    <Mail className="w-3.5 h-3.5" />
+                    <EnvelopeIcon className="w-3.5 h-3.5" />
                     Lien magique
                   </button>
                 </div>
@@ -421,7 +403,7 @@ const AdminPage = () => {
                   <form onSubmit={handlePasswordSignIn} className="space-y-5">
                     <div className="space-y-2">
                       <label className="text-[hsl(210,15%,65%)] text-xs font-semibold uppercase tracking-wider pl-1 flex items-center gap-2">
-                        <Mail className="w-3.5 h-3.5" />
+                        <EnvelopeIcon className="w-3.5 h-3.5" />
                         Email
                       </label>
                       <Input
@@ -435,7 +417,7 @@ const AdminPage = () => {
                     </div>
                     <div className="space-y-2">
                       <label className="text-[hsl(210,15%,65%)] text-xs font-semibold uppercase tracking-wider pl-1 flex items-center gap-2">
-                        <Lock className="w-3.5 h-3.5" />
+                        <LockClosedIcon className="w-3.5 h-3.5" />
                         Mot de passe
                       </label>
                       <Input
@@ -460,7 +442,7 @@ const AdminPage = () => {
                       ) : (
                         <span className="flex items-center gap-2">
                           Se connecter
-                          <ArrowRight className="w-4 h-4" />
+                          <ArrowRightIcon className="w-4 h-4" />
                         </span>
                       )}
                     </Button>
@@ -469,7 +451,7 @@ const AdminPage = () => {
               <form onSubmit={handleSendOtp} className="space-y-5">
                 <div className="space-y-2">
                   <label className="text-[hsl(210,15%,65%)] text-xs font-semibold uppercase tracking-wider pl-1 flex items-center gap-2">
-                    <Mail className="w-3.5 h-3.5" />
+                    <EnvelopeIcon className="w-3.5 h-3.5" />
                     Adresse email autorisée
                   </label>
                   <div className="relative group">
@@ -498,7 +480,7 @@ const AdminPage = () => {
                   ) : (
                     <span className="flex items-center gap-2">
                       Recevoir le lien de connexion
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+                      <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
                     </span>
                   )}
                 </Button>
@@ -510,7 +492,7 @@ const AdminPage = () => {
                 <div className="rounded-2xl bg-[hsl(215,20%,10%)] border border-[hsl(215,20%,22%)] p-5 text-center space-y-3">
                   <div className="flex justify-center">
                     <div className="w-12 h-12 rounded-full bg-primary/15 flex items-center justify-center">
-                      <Inbox className="w-6 h-6 text-[hsl(25,90%,55%)]" />
+                      <EnvelopeIcon className="w-6 h-6 text-[hsl(25,90%,55%)]" />
                     </div>
                   </div>
                   <p className="text-white text-sm leading-relaxed">
@@ -527,7 +509,7 @@ const AdminPage = () => {
                   onClick={() => setAuthStep("email")}
                   className="w-full flex items-center justify-center gap-2 text-[hsl(210,15%,55%)] text-sm hover:text-white transition-colors py-2"
                 >
-                  <ArrowLeft className="w-4 h-4" />
+                  <ArrowLeftIcon className="w-4 h-4" />
                   Autre adresse email
                 </button>
               </div>
@@ -536,7 +518,7 @@ const AdminPage = () => {
             {/* Divider */}
             <div className="mt-6 pt-6 border-t border-[hsl(215,20%,18%)]">
               <div className="flex items-center justify-center gap-2 text-[hsl(210,15%,40%)] text-xs">
-                <Lock className="w-3 h-3" />
+                <LockClosedIcon className="w-3 h-3" />
                 <span>Connexion sécurisée · Accès restreint</span>
               </div>
             </div>
@@ -558,7 +540,7 @@ const AdminPage = () => {
         <div className="w-full max-w-[420px] text-center animate-fade-in">
           <div className="flex justify-center mb-6">
             <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center shadow-2xl">
-              <ShieldAlert className="w-10 h-10 text-white" />
+              <ExclamationTriangleIcon className="w-10 h-10 text-white" />
             </div>
           </div>
           <h1 className="text-2xl font-black text-white mb-3">Accès refusé</h1>
@@ -570,7 +552,7 @@ const AdminPage = () => {
             onClick={handleLogout}
             className="px-8"
           >
-            <LogOut className="w-4 h-4 mr-2" /> Se déconnecter
+            <ArrowRightOnRectangleIcon className="w-4 h-4 mr-2" /> Se déconnecter
           </Button>
         </div>
       </div>
@@ -578,18 +560,18 @@ const AdminPage = () => {
   }
 
   const tabs = [
-    { id: "personnel", label: "Personnel", icon: Users },
-    { id: "blog", label: "Blog", icon: Newspaper },
-    { id: "college", label: "Collège Étudiants", icon: GraduationCap },
-    { id: "galerie", label: "Galerie", icon: ImageIcon },
-    { id: "videos", label: "Vidéos", icon: Video },
-    { id: "calendrier", label: "Calendrier", icon: CalendarDays },
-    { id: "frais", label: "Frais", icon: Banknote },
-    { id: "facultes", label: "Facultés", icon: Building2 },
-    { id: "services", label: "Services", icon: BriefcaseBusiness },
-    { id: "bibliotheque", label: "Bibliothèque", icon: Library },
-    { id: "partenaires", label: "Partenaires", icon: Handshake },
-    { id: "utilisateurs", label: "Utilisateurs & Rôles", icon: UserCog },
+    { id: "personnel", label: "Personnel", icon: UsersIcon },
+    { id: "blog", label: "Blog", icon: NewspaperIcon },
+    { id: "college", label: "Collège Étudiants", icon: AcademicCapIcon },
+    { id: "galerie", label: "Galerie", icon: PhotoIcon },
+    { id: "videos", label: "Vidéos", icon: VideoCameraIcon },
+    { id: "calendrier", label: "Calendrier", icon: CalendarDaysIcon },
+    { id: "frais", label: "Frais", icon: BanknotesIcon },
+    { id: "facultes", label: "Facultés", icon: BuildingOfficeIcon },
+    { id: "services", label: "Services", icon: BriefcaseIcon },
+    { id: "bibliotheque", label: "Bibliothèque", icon: BookOpenIcon },
+    { id: "partenaires", label: "Partenaires", icon: BriefcaseIcon },
+    { id: "utilisateurs", label: "Utilisateurs & Rôles", icon: UserIcon },
   ];
 
   return (
@@ -608,7 +590,7 @@ const AdminPage = () => {
           onClick={handleLogout}
           className="bg-red-600 hover:bg-red-700 text-white font-semibold px-3 sm:px-5 py-2 shadow-md shrink-0"
         >
-          <LogOut className="w-4 h-4 sm:mr-2" />
+          <ArrowRightOnRectangleIcon className="w-4 h-4 sm:mr-2" />
           <span className="hidden sm:inline">Déconnexion</span>
         </Button>
       </header>
@@ -664,7 +646,7 @@ const AdminPage = () => {
               <div className="space-y-6">
                 <div className="rounded-xl border border-border bg-muted/20 p-5">
                   <div className="flex items-center gap-2 mb-2">
-                    <UserCog className="w-5 h-5 text-primary" />
+                    <UserIcon className="w-5 h-5 text-primary" />
                     <h3 className="text-lg font-semibold text-foreground">Utilisateurs & Rôles</h3>
                   </div>
                   <p className="text-sm text-muted-foreground">
@@ -740,7 +722,7 @@ const AdminPage = () => {
                                 {row.user_id}
                               </p>
                               <p className="text-xs text-muted-foreground inline-flex items-center gap-1 mt-0.5">
-                                <Shield className="w-3.5 h-3.5 text-primary" />
+                                <ShieldCheckIcon className="w-3.5 h-3.5 text-primary" />
                                 {roleName}
                               </p>
                             </div>

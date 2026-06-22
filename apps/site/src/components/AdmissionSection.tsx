@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 import AnimatedSection from "./AnimatedSection";
 import { useLanguage } from "@/i18n/LanguageContext";
@@ -47,12 +47,11 @@ const AdmissionSection = ({ variant = "section" }: AdmissionSectionProps) => {
                   {t("admission.onlineDesc")}
                 </p>
               </div>
-              <Link
-                to="/admission"
+              <Link                 to="/admission"
                 className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition-colors group"
               >
                 {t("admission.ctaForm")}
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                <ArrowRightIcon className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </div>
 

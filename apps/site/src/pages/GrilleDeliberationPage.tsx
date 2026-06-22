@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import Layout from "@/components/Layout";
-import { Loader2 } from "lucide-react";
+import { ArrowPath } from "@heroicons/react/24/outline";
 
 const GrilleDeliberationPage = () => {
   useEffect(() => {
@@ -11,7 +11,7 @@ const GrilleDeliberationPage = () => {
     <Layout>
       <div className="min-h-[60vh] flex items-center justify-center">
         <div className="text-center space-y-4">
-          <Loader2 className="w-8 h-8 animate-spin text-primary mx-auto" />
+          <ArrowPathIcon className="w-8 h-8 animate-spin text-primary mx-auto" />
           <p className="text-muted-foreground text-sm">
             Redirection vers la page de connexion étudiant…
           </p>

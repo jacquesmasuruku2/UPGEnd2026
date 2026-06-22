@@ -1,4 +1,4 @@
-import { GraduationCap, BookOpen, FlaskConical } from "lucide-react";
+import { AcademicCap, BookOpen, Flask } from "@heroicons/react/24/outline";
 import AnimatedSection from "./AnimatedSection";
 
 const levels = [

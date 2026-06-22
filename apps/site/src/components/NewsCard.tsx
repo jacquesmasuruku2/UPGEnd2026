@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Calendar, ArrowRight } from "lucide-react";
+import { CalendarIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 import { memo } from "react";
 
@@ -35,19 +35,18 @@ const NewsCard = memo(({ id, title, excerpt, date, image, slug }: NewsCardProps)
       )}
       <div className="p-5 flex-1 flex flex-col">
         <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
-          <Calendar className="w-3 h-3" />
+          <CalendarIcon className="w-3 h-3" />
           <span>{date}</span>
         </div>
         <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-[hsl(var(--upg-orange))] transition-colors duration-300 line-clamp-2">
           {title}
         </h3>
         <p className="text-sm text-muted-foreground mb-4 line-clamp-3 flex-1">{excerpt}</p>
-        <Link
-          to={`/blog/${slug}`}
+        <Link           to={`/blog/${slug}`}
           className="inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:text-[hsl(var(--upg-orange))] transition-colors duration-300 hover:gap-3"
         >
           <span>Lire la suite</span>
-          <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+          <ArrowRightIcon className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
         </Link>
       </div>
     </motion.article>

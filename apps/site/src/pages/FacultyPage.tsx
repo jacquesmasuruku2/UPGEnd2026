@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
-import { ChevronRight } from "lucide-react";
+import { ChevronRightIcon } from "@heroicons/react/24/outline";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { useFacultyContent } from "@/hooks/useSupabaseData";
@@ -89,9 +89,9 @@ const FacultyPage = () => {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center gap-2 text-primary-foreground/60 text-sm">
             <Link to="/" className="hover:text-primary-foreground transition-colors">Accueil</Link>
-            <ChevronRight className="w-3.5 h-3.5" />
+            <ChevronRightIcon className="w-3.5 h-3.5" />
             <Link to="/#facultes" className="hover:text-primary-foreground transition-colors">{t("nav.faculties")}</Link>
-            <ChevronRight className="w-3.5 h-3.5" />
+            <ChevronRightIcon className="w-3.5 h-3.5" />
             <span className="text-primary-foreground">{faculty.name}</span>
           </div>
         </div>

@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import Layout from "@/components/Layout";
 import RichContent from "@/components/RichContent";
 import SocialShareButtons from "@/components/SocialShareButtons";
-import { Users, Megaphone, CalendarDays, ChevronRight, Eye, Heart } from "lucide-react";
+import { UsersIcon, MegaphoneIcon, CalendarDaysIcon, ChevronRightIcon, EyeIcon, HeartIcon } from "@heroicons/react/24/outline";
 import {
   useCollegePosts,
   useBlogArticles,
@@ -123,9 +123,9 @@ const CollegeEtudiantsPage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {[
-              { icon: Users, title: "Comité Exécutif", text: "Le comité estudiantin représente les intérêts de tous les étudiants auprès de l'administration." },
-              { icon: Megaphone, title: "Annonces", text: "Retrouvez ici toutes les communications et annonces du collège des étudiants." },
-              { icon: CalendarDays, title: "Événements", text: "Activités culturelles, sportives et académiques organisées par les étudiants." },
+              { icon: UsersIcon, title: "Comité Exécutif", text: "Le comité estudiantin représente les intérêts de tous les étudiants auprès de l'administration." },
+              { icon: MegaphoneIcon, title: "Annonces", text: "Retrouvez ici toutes les communications et annonces du collège des étudiants." },
+              { icon: CalendarDaysIcon, title: "Événements", text: "Activités culturelles, sportives et académiques organisées par les étudiants." },
             ].map((card, i) => (
               <AnimatedSection key={card.title} delay={i * 0.15}>
                 <div className="bg-card border border-border rounded-lg p-6 text-center hover:shadow-md transition-all hover:-translate-y-1">
@@ -177,7 +177,7 @@ const CollegeEtudiantsPage = () => {
                             <div className="flex flex-wrap items-center gap-3 mb-4 text-xs text-muted-foreground">
                               <span className="bg-primary/10 text-primary px-2 py-0.5 rounded font-medium">Collège</span>
                               <span className="flex items-center gap-1">
-                                <CalendarDays className="w-3 h-3" />
+                                <CalendarDaysIcon className="w-3 h-3" />
                                 {format(new Date(p.created_at), "d MMM yyyy", { locale: fr })}
                               </span>
                               {p.author && <span>Par {p.author}</span>}
@@ -201,7 +201,7 @@ const CollegeEtudiantsPage = () => {
                                   </Button>
                                 )}
                                 <span className="inline-flex items-center gap-1 rounded-full bg-muted px-3 py-1 text-xs text-muted-foreground">
-                                  <Eye className="w-3.5 h-3.5" /> {p.views_count ?? 0}
+                                  <EyeIcon className="w-3.5 h-3.5" /> {p.views_count ?? 0}
                                 </span>
                                 <Button
                                   type="button"
@@ -217,7 +217,7 @@ const CollegeEtudiantsPage = () => {
                                     });
                                   }}
                                 >
-                                  <Heart className={`w-3.5 h-3.5 mr-1 ${isLiked ? "fill-current" : ""}`} />
+                                  <HeartIcon className={`w-3.5 h-3.5 mr-1 ${isLiked ? "fill-current" : ""}`} />
                                   {p.likes_count ?? 0}
                                 </Button>
                               </div>
@@ -299,12 +299,11 @@ const CollegeEtudiantsPage = () => {
                 <div className="divide-y divide-border">
                   {articles && articles.length > 0 ? (
                     articles.slice(0, 5).map((a) => (
-                      <Link
-                        key={a.id}
+                      <Link                         key={a.id}
                         to={`/blog?article=${a.id}`}
                         className="flex items-start gap-2 py-3 group hover:bg-accent/50 px-2 -mx-2 rounded transition-colors"
                       >
-                        <ChevronRight className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                        <ChevronRightIcon className="w-4 h-4 text-primary mt-0.5 shrink-0" />
                         <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors leading-snug">
                           {a.title}
                         </span>

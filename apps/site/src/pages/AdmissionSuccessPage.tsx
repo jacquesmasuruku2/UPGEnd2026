@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { CheckCircle2, Mail, Phone, MapPin, Calendar, Users, Award, ArrowRight, Download, Share2 } from 'lucide-react';
+import { CheckCircleIcon, EnvelopeIcon, PhoneIcon, MapPinIcon, CalendarIcon, UsersIcon, TrophyIcon, ArrowRightIcon, ArrowDownTrayIcon, ShareIcon } from "@heroicons/react/24/outline";
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
@@ -171,7 +171,7 @@ Signature électronique: ${studentData.reference}
         {/* Success Header */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-6">
-            <CheckCircle2 className="w-10 h-10 text-green-600" />
+            <CheckCircleIcon className="w-10 h-10 text-green-600" />
           </div>
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
             Félicitations, {studentData.prenom} !
@@ -189,7 +189,7 @@ Signature électronique: ${studentData.reference}
           <Card className="shadow-lg border-0">
             <CardContent className="p-6">
               <div className="flex items-center mb-4">
-                <Users className="w-5 h-5 text-blue-600 mr-2" />
+                <UsersIcon className="w-5 h-5 text-blue-600 mr-2" />
                 <h2 className="text-xl font-semibold text-gray-900">Vos informations</h2>
               </div>
               
@@ -202,7 +202,7 @@ Signature électronique: ${studentData.reference}
                 </div>
                 
                 <div className="flex items-start space-x-3">
-                  <Mail className="w-4 h-4 text-gray-400 mt-1" />
+                  <EnvelopeIcon className="w-4 h-4 text-gray-400 mt-1" />
                   <div className="flex-1">
                     <p className="text-sm text-gray-500">Email</p>
                     <p className="font-medium text-gray-900">{studentData.email}</p>
@@ -210,7 +210,7 @@ Signature électronique: ${studentData.reference}
                 </div>
                 
                 <div className="flex items-start space-x-3">
-                  <Phone className="w-4 h-4 text-gray-400 mt-1" />
+                  <PhoneIcon className="w-4 h-4 text-gray-400 mt-1" />
                   <div className="flex-1">
                     <p className="text-sm text-gray-500">Téléphone</p>
                     <p className="font-medium text-gray-900">{studentData.telephone}</p>
@@ -218,7 +218,7 @@ Signature électronique: ${studentData.reference}
                 </div>
                 
                 <div className="flex items-start space-x-3">
-                  <Calendar className="w-4 h-4 text-gray-400 mt-1" />
+                  <CalendarIcon className="w-4 h-4 text-gray-400 mt-1" />
                   <div className="flex-1">
                     <p className="text-sm text-gray-500">Date d'inscription</p>
                     <p className="font-medium text-gray-900">{studentData.dateInscription}</p>
@@ -232,7 +232,7 @@ Signature électronique: ${studentData.reference}
           <Card className="shadow-lg border-0">
             <CardContent className="p-6">
               <div className="flex items-center mb-4">
-                <Award className="w-5 h-5 text-blue-600 mr-2" />
+                <TrophyIcon className="w-5 h-5 text-blue-600 mr-2" />
                 <h2 className="text-xl font-semibold text-gray-900">Programme académique</h2>
               </div>
               
@@ -271,7 +271,7 @@ Signature électronique: ${studentData.reference}
             <div className="grid md:grid-cols-3 gap-4">
               <div className="text-center p-4 bg-gray-50 rounded-lg">
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Mail className="w-6 h-6 text-blue-600" />
+                  <EnvelopeIcon className="w-6 h-6 text-blue-600" />
                 </div>
                 <h3 className="font-medium text-gray-900 mb-1">1. Confirmation email</h3>
                 <p className="text-sm text-gray-600">
@@ -281,7 +281,7 @@ Signature électronique: ${studentData.reference}
               
               <div className="text-center p-4 bg-gray-50 rounded-lg">
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Phone className="w-6 h-6 text-blue-600" />
+                  <PhoneIcon className="w-6 h-6 text-blue-600" />
                 </div>
                 <h3 className="font-medium text-gray-900 mb-1">2. Contact administratif</h3>
                 <p className="text-sm text-gray-600">
@@ -291,7 +291,7 @@ Signature électronique: ${studentData.reference}
               
               <div className="text-center p-4 bg-gray-50 rounded-lg">
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <MapPin className="w-6 h-6 text-blue-600" />
+                  <MapPinIcon className="w-6 h-6 text-blue-600" />
                 </div>
                 <h3 className="font-medium text-gray-900 mb-1">3. Orientation</h3>
                 <p className="text-sm text-gray-600">
@@ -305,18 +305,18 @@ Signature électronique: ${studentData.reference}
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
           <Button onClick={handleDownload} className="flex items-center space-x-2">
-            <Download className="w-4 h-4" />
+            <ArrowDownTrayIcon className="w-4 h-4" />
             <span>Télécharger l'attestation</span>
           </Button>
           
           <Button variant="outline" onClick={handleShare} className="flex items-center space-x-2">
-            <Share2 className="w-4 h-4" />
+            <ShareIcon className="w-4 h-4" />
             <span>Partager la nouvelle</span>
           </Button>
           
           <Button asChild className="flex items-center space-x-2">
             <Link to="/contact">
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRightIcon className="w-4 h-4" />
               <span>Nous contacter</span>
             </Link>
           </Button>
@@ -328,15 +328,15 @@ Signature électronique: ${studentData.reference}
             <h3 className="text-xl font-semibold mb-4">Besoin d'aide ?</h3>
             <div className="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-6">
               <div className="flex items-center space-x-2">
-                <Phone className="w-4 h-4" />
+                <PhoneIcon className="w-4 h-4" />
                 <span>+243 998 765 432</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Mail className="w-4 h-4" />
+                <EnvelopeIcon className="w-4 h-4" />
                 <span>admissions@upgoma.org</span>
               </div>
               <div className="flex items-center space-x-2">
-                <MapPin className="w-4 h-4" />
+                <MapPinIcon className="w-4 h-4" />
                 <span>Goma, Nord Kivu</span>
               </div>
             </div>

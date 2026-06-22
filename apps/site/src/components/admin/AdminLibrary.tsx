@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import ImageUpload from "./ImageUpload";
-import { Plus, Pencil, Trash2, Save, X, Eye, EyeOff, Upload } from "lucide-react";
+import { PlusIcon, PencilIcon, TrashIcon, BookmarkIcon, XMarkIcon, EyeIcon, EyeSlashIcon, ArrowUpTrayIcon } from "@heroicons/react/24/outline";
 import { toast } from "sonner";
 import { useRef } from "react";
 
@@ -56,7 +56,7 @@ const AdminLibrary = () => {
       <div className="flex justify-between items-center">
         <h3 className="text-lg font-bold text-foreground">Bibliothèque ({items?.length || 0})</h3>
         <Button size="sm" onClick={() => setEditing(empty)}>
-          <Plus className="w-4 h-4 mr-1" /> Ajouter un livre
+          <PlusIcon className="w-4 h-4 mr-1" /> Ajouter un livre
         </Button>
       </div>
 
@@ -83,7 +83,7 @@ const AdminLibrary = () => {
             <div className="flex gap-2 items-center">
               <input ref={pdfRef} type="file" accept=".pdf" className="hidden" onChange={(e) => e.target.files?.[0] && handlePdfUpload(e.target.files[0])} />
               <Button type="button" variant="outline" size="sm" onClick={() => pdfRef.current?.click()} disabled={uploadingPdf}>
-                <Upload className="w-4 h-4 mr-1" />
+                <ArrowUpTrayIcon className="w-4 h-4 mr-1" />
                 {uploadingPdf ? "Upload..." : "Uploader PDF"}
               </Button>
               <Input placeholder="Ou coller un lien PDF..." value={editing.pdf_url} onChange={(e) => setEditing({ ...editing, pdf_url: e.target.value })} className="text-sm h-9" />
@@ -97,10 +97,10 @@ const AdminLibrary = () => {
 
           <div className="flex gap-2">
             <Button size="sm" onClick={handleSave} disabled={upsert.isPending}>
-              <Save className="w-4 h-4 mr-1" /> Sauvegarder
+              <BookmarkIcon className="w-4 h-4 mr-1" /> Sauvegarder
             </Button>
             <Button size="sm" variant="outline" onClick={() => setEditing(null)}>
-              <X className="w-4 h-4 mr-1" /> Annuler
+              <XMarkIcon className="w-4 h-4 mr-1" /> Annuler
             </Button>
           </div>
         </div>
@@ -117,16 +117,16 @@ const AdminLibrary = () => {
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2">
                 <h4 className="font-bold text-foreground text-sm truncate">{b.title}</h4>
-                {b.published ? <Eye className="w-3 h-3 text-green-600 shrink-0" /> : <EyeOff className="w-3 h-3 text-muted-foreground shrink-0" />}
+                {b.published ? <EyeIcon className="w-3 h-3 text-green-600 shrink-0" /> : <EyeSlashIcon className="w-3 h-3 text-muted-foreground shrink-0" />}
               </div>
               <p className="text-muted-foreground text-xs">{b.author} • {b.category}</p>
             </div>
             <div className="flex gap-1 shrink-0">
               <Button size="icon" variant="ghost" onClick={() => setEditing({ id: b.id, title: b.title, author: b.author || "", description: b.description || "", category: b.category || "", pdf_url: b.pdf_url || "", cover_url: b.cover_url || "", published: b.published || false, display_order: b.display_order || 0 })}>
-                <Pencil className="w-4 h-4" />
+                <PencilIcon className="w-4 h-4" />
               </Button>
               <Button size="icon" variant="ghost" className="text-destructive" onClick={() => remove.mutate(b.id)}>
-                <Trash2 className="w-4 h-4" />
+                <TrashIcon className="w-4 h-4" />
               </Button>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Check, X, X as CloseIcon, Loader2 } from "lucide-react";
+import { CheckIcon, XMarkIcon, ArrowPathIcon } from "@heroicons/react/24/outline";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -261,7 +261,7 @@ const PartnersPage = () => {
             toast.type === "success" ? "bg-green-500 text-white" : "bg-red-500 text-white"
           }`}
         >
-          {toast.type === "success" ? <Check className="w-5 h-5" /> : <X className="w-5 h-5" />}
+          {toast.type === "success" ? <CheckIcon className="w-5 h-5" /> : <XMarkIcon className="w-5 h-5" />}
           <span>{toast.message}</span>
         </div>
       )}
@@ -380,7 +380,7 @@ const PartnersPage = () => {
                 size="icon"
                 onClick={() => setIsModalOpen(false)}
               >
-                <CloseIcon className="w-5 h-5" />
+                <XMarkIcon className="w-5 h-5" />
               </Button>
             </div>
 
@@ -393,9 +393,9 @@ const PartnersPage = () => {
                 </h3>
                 <div className="grid md:grid-cols-2 gap-3">
                   <div>
-                    <Label htmlFor="organizationName" className="text-sm">
+                    <TagIcon htmlFor="organizationName" className="text-sm">
                       Nom de l'organisation <span className="text-red-500">*</span>
-                    </Label>
+                    </TagIcon>
                     <Input
                       id="organizationName"
                       value={formData.organizationName}
@@ -407,9 +407,9 @@ const PartnersPage = () => {
                     )}
                   </div>
                   <div>
-                    <Label className="text-sm">
+                    <TagIcon className="text-sm">
                       Type d'organisation <span className="text-red-500">*</span>
-                    </Label>
+                    </TagIcon>
                     <div className="grid grid-cols-2 gap-1 mt-1">
                       {["Entreprise", "Université", "ONG", "Institution Publique", "Autre"].map((type) => (
                         <label key={type} className="flex items-center gap-2 px-2 py-1.5 border border-border rounded text-xs cursor-pointer hover:bg-accent">
@@ -430,7 +430,7 @@ const PartnersPage = () => {
                     )}
                     {formData.organizationType === "Autre" && (
                       <div className="mt-2">
-                        <Label htmlFor="organizationTypeOther" className="text-xs">Précisez le type <span className="text-red-500">*</span></Label>
+                        <TagIcon htmlFor="organizationTypeOther" className="text-xs">Précisez le type <span className="text-red-500">*</span></TagIcon>
                         <Input
                           id="organizationTypeOther"
                           value={formData.organizationTypeOther}
@@ -445,7 +445,7 @@ const PartnersPage = () => {
                     )}
                   </div>
                   <div>
-                    <Label htmlFor="headquarters" className="text-sm">Siège social / Pays-Ville <span className="text-red-500">*</span></Label>
+                    <TagIcon htmlFor="headquarters" className="text-sm">Siège social / Pays-Ville <span className="text-red-500">*</span></TagIcon>
                     <Input
                       id="headquarters"
                       value={formData.headquarters}
@@ -457,7 +457,7 @@ const PartnersPage = () => {
                     )}
                   </div>
                   <div>
-                    <Label htmlFor="website" className="text-sm">Site web</Label>
+                    <TagIcon htmlFor="website" className="text-sm">Site web</TagIcon>
                     <Input
                       id="website"
                       type="text"
@@ -471,7 +471,7 @@ const PartnersPage = () => {
                     )}
                   </div>
                   <div>
-                    <Label htmlFor="sector" className="text-sm">Secteur d'activité <span className="text-red-500">*</span></Label>
+                    <TagIcon htmlFor="sector" className="text-sm">Secteur d'activité <span className="text-red-500">*</span></TagIcon>
                     <Input
                       id="sector"
                       value={formData.sector}
@@ -483,7 +483,7 @@ const PartnersPage = () => {
                     )}
                   </div>
                   <div>
-                    <Label htmlFor="logo" className="text-sm">Logo de l'organisation <span className="text-red-500">*</span></Label>
+                    <TagIcon htmlFor="logo" className="text-sm">Logo de l'organisation <span className="text-red-500">*</span></TagIcon>
                     <Input
                       id="logo"
                       type="file"
@@ -514,9 +514,9 @@ const PartnersPage = () => {
                 </h3>
                 <div className="grid md:grid-cols-2 gap-3">
                   <div>
-                    <Label htmlFor="contactName" className="text-sm">
+                    <TagIcon htmlFor="contactName" className="text-sm">
                       Nom complet <span className="text-red-500">*</span>
-                    </Label>
+                    </TagIcon>
                     <Input
                       id="contactName"
                       value={formData.contactName}
@@ -528,7 +528,7 @@ const PartnersPage = () => {
                     )}
                   </div>
                   <div>
-                    <Label htmlFor="position" className="text-sm">Fonction <span className="text-red-500">*</span></Label>
+                    <TagIcon htmlFor="position" className="text-sm">Fonction <span className="text-red-500">*</span></TagIcon>
                     <Input
                       id="position"
                       value={formData.position}
@@ -540,9 +540,9 @@ const PartnersPage = () => {
                     )}
                   </div>
                   <div>
-                    <Label htmlFor="email" className="text-sm">
+                    <TagIcon htmlFor="email" className="text-sm">
                       E-mail professionnel <span className="text-red-500">*</span>
-                    </Label>
+                    </TagIcon>
                     <Input
                       id="email"
                       type="email"
@@ -555,7 +555,7 @@ const PartnersPage = () => {
                     )}
                   </div>
                   <div>
-                    <Label htmlFor="phone" className="text-sm">Téléphone <span className="text-red-500">*</span></Label>
+                    <TagIcon htmlFor="phone" className="text-sm">Téléphone <span className="text-red-500">*</span></TagIcon>
                     <Input
                       id="phone"
                       type="tel"
@@ -576,9 +576,9 @@ const PartnersPage = () => {
                   Nature du Partenariat
                 </h3>
                 <div>
-                  <Label className="text-sm">
+                  <TagIcon className="text-sm">
                     Domaine(s) d'intérêt <span className="text-red-500">*</span>
-                  </Label>
+                  </TagIcon>
                   <div className="grid md:grid-cols-2 gap-1 mt-1">
                     {interestOptions.map((interest) => (
                       <label key={interest} className="flex items-center gap-2 px-2 py-1.5 border border-border rounded text-xs cursor-pointer hover:bg-accent">
@@ -597,7 +597,7 @@ const PartnersPage = () => {
                   )}
                   {formData.interests.includes("Autre") && (
                     <div className="mt-2">
-                      <Label htmlFor="interestsOther" className="text-xs">Précisez le domaine d'intérêt <span className="text-red-500">*</span></Label>
+                      <TagIcon htmlFor="interestsOther" className="text-xs">Précisez le domaine d'intérêt <span className="text-red-500">*</span></TagIcon>
                       <Input
                         id="interestsOther"
                         value={formData.interestsOther}
@@ -619,9 +619,9 @@ const PartnersPage = () => {
                   Détails de la Proposition
                 </h3>
                 <div>
-                  <Label htmlFor="objectives" className="text-sm">
+                  <TagIcon htmlFor="objectives" className="text-sm">
                     Objectifs principaux <span className="text-red-500">*</span>
-                  </Label>
+                  </TagIcon>
                   <Textarea
                     id="objectives"
                     value={formData.objectives}
@@ -638,7 +638,7 @@ const PartnersPage = () => {
                 </div>
                 <div className="grid md:grid-cols-2 gap-3">
                   <div>
-                    <Label htmlFor="duration" className="text-sm">Durée envisagée <span className="text-red-500">*</span></Label>
+                    <TagIcon htmlFor="duration" className="text-sm">Durée envisagée <span className="text-red-500">*</span></TagIcon>
                     <select
                       id="duration"
                       value={formData.duration}
@@ -656,9 +656,9 @@ const PartnersPage = () => {
                     )}
                   </div>
                   <div>
-                    <Label htmlFor="file" className="text-sm">
+                    <TagIcon htmlFor="file" className="text-sm">
                       Lettre d'intention (PDF)
-                    </Label>
+                    </TagIcon>
                     <Input
                       id="file"
                       type="file"
@@ -717,7 +717,7 @@ const PartnersPage = () => {
                 >
                   {upsertRequest.isPending ? (
                     <>
-                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      <ArrowPathIcon className="w-4 h-4 mr-2 animate-spin" />
                       Veuillez patienter…
                     </>
                   ) : (

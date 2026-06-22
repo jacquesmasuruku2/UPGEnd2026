@@ -1,4 +1,4 @@
-import { FileDown } from "lucide-react";
+import { ArrowDownTrayIcon } from "@heroicons/react/24/outline";
 import { PdfAcrobatIcon } from "@/components/fees/PdfAcrobatIcon";
 import { useState } from "react";
 
@@ -38,7 +38,7 @@ export function PdfDownloadCard({ href, title, caption }: { href: string; title:
             {caption}
           </p>
         </div>
-        <FileDown
+        <ArrowDownTrayIcon
           className="h-3.5 w-3.5 shrink-0 text-muted-foreground/80 transition-colors group-hover:text-[#dc2626] sm:h-4 sm:w-4"
           strokeWidth={2}
           aria-hidden

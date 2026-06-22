@@ -3,7 +3,7 @@ import { useCalendarEvents, useUpsertCalendarEvent, useDeleteCalendarEvent } fro
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Plus, Pencil, Trash2, Save, X, CalendarDays } from "lucide-react";
+import { PlusIcon, PencilIcon, TrashIcon, BookmarkIcon, XMarkIcon, CalendarDaysIcon } from "@heroicons/react/24/outline";
 
 interface FormData {
   id?: string;
@@ -37,7 +37,7 @@ const AdminCalendar = () => {
       <div className="flex justify-between items-center">
         <h3 className="text-lg font-bold text-foreground">Calendrier ({items?.length || 0})</h3>
         <Button size="sm" onClick={() => setEditing(empty)}>
-          <Plus className="w-4 h-4 mr-1" /> Ajouter
+          <PlusIcon className="w-4 h-4 mr-1" /> Ajouter
         </Button>
       </div>
 
@@ -62,10 +62,10 @@ const AdminCalendar = () => {
           </div>
           <div className="flex gap-2">
             <Button size="sm" onClick={handleSave} disabled={upsert.isPending}>
-              <Save className="w-4 h-4 mr-1" /> Sauvegarder
+              <BookmarkIcon className="w-4 h-4 mr-1" /> Sauvegarder
             </Button>
             <Button size="sm" variant="outline" onClick={() => setEditing(null)}>
-              <X className="w-4 h-4 mr-1" /> Annuler
+              <XMarkIcon className="w-4 h-4 mr-1" /> Annuler
             </Button>
           </div>
         </div>
@@ -75,7 +75,7 @@ const AdminCalendar = () => {
         {items?.map((e) => (
           <div key={e.id} className="bg-card border border-border rounded-lg p-4 flex items-center gap-4">
             <div className="w-10 h-10 rounded-full bg-upg-sky-light flex items-center justify-center shrink-0">
-              <CalendarDays className="w-5 h-5 text-primary" />
+              <CalendarDaysIcon className="w-5 h-5 text-primary" />
             </div>
             <div className="flex-1">
               <h4 className="font-bold text-foreground text-sm">{e.title}</h4>
@@ -83,10 +83,10 @@ const AdminCalendar = () => {
             </div>
             <div className="flex gap-1 shrink-0">
               <Button size="icon" variant="ghost" onClick={() => setEditing({ id: e.id, title: e.title, description: e.description || "", event_date: e.event_date, end_date: e.end_date || "", category: e.category || "" })}>
-                <Pencil className="w-4 h-4" />
+                <PencilIcon className="w-4 h-4" />
               </Button>
               <Button size="icon" variant="ghost" className="text-destructive" onClick={() => remove.mutate(e.id)}>
-                <Trash2 className="w-4 h-4" />
+                <TrashIcon className="w-4 h-4" />
               </Button>
             </div>
           </div>

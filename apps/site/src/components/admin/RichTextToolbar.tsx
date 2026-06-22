@@ -1,6 +1,5 @@
 import type { RefObject } from "react";
 import { Button } from "@/components/ui/button";
-import { Bold, Italic, Link2, List, ListOrdered, AlignLeft, AlignJustify } from "lucide-react";
 
 function stripLeadingAlignLine(value: string): string {
   const lines = value.split("\n");
@@ -64,7 +63,10 @@ export const RichTextToolbar = ({ textareaRef, value, onChange }: Props) => {
           })
         }
       >
-        <Bold className="w-3.5 h-3.5" />
+        <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M6 4h8a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6z"></path>
+          <path d="M6 12h9a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6z"></path>
+        </svg>
       </Button>
       <Button
         type="button"
@@ -90,7 +92,11 @@ export const RichTextToolbar = ({ textareaRef, value, onChange }: Props) => {
           })
         }
       >
-        <Italic className="w-3.5 h-3.5" />
+        <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="19" y1="4" x2="10" y2="4"></line>
+          <line x1="14" y1="20" x2="5" y2="20"></line>
+          <line x1="15" y1="4" x2="15" y2="20"></line>
+        </svg>
       </Button>
       <Button
         type="button"
@@ -112,7 +118,10 @@ export const RichTextToolbar = ({ textareaRef, value, onChange }: Props) => {
           })
         }
       >
-        <Link2 className="w-3.5 h-3.5" />
+        <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+        </svg>
       </Button>
       <Button
         type="button"
@@ -138,7 +147,14 @@ export const RichTextToolbar = ({ textareaRef, value, onChange }: Props) => {
           })
         }
       >
-        <List className="w-3.5 h-3.5" />
+        <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="8" y1="6" x2="21" y2="6"></line>
+          <line x1="8" y1="12" x2="21" y2="12"></line>
+          <line x1="8" y1="18" x2="21" y2="18"></line>
+          <line x1="3" y1="6" x2="3.01" y2="6"></line>
+          <line x1="3" y1="12" x2="3.01" y2="12"></line>
+          <line x1="3" y1="18" x2="3.01" y2="18"></line>
+        </svg>
       </Button>
       <Button
         type="button"
@@ -164,7 +180,14 @@ export const RichTextToolbar = ({ textareaRef, value, onChange }: Props) => {
           })
         }
       >
-        <ListOrdered className="w-3.5 h-3.5" />
+        <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="10" y1="6" x2="21" y2="6"></line>
+          <line x1="10" y1="12" x2="21" y2="12"></line>
+          <line x1="10" y1="18" x2="21" y2="18"></line>
+          <path d="M4 6h1v4"></path>
+          <path d="M4 10h2"></path>
+          <path d="M6 18H4c0-1 2-2 2-3s-1-1.5-2-2"></path>
+        </svg>
       </Button>
       <Button
         type="button"
@@ -206,7 +229,11 @@ export const RichTextToolbar = ({ textareaRef, value, onChange }: Props) => {
           })
         }
       >
-        <AlignLeft className="w-3.5 h-3.5" />
+        <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="17" y1="10" x2="3" y2="10"></line>
+          <line x1="21" y1="6" x2="3" y2="6"></line>
+          <line x1="21" y1="14" x2="3" y2="14"></line>
+        </svg>
       </Button>
       <Button
         type="button"
@@ -221,7 +248,12 @@ export const RichTextToolbar = ({ textareaRef, value, onChange }: Props) => {
           })
         }
       >
-        <AlignJustify className="w-3.5 h-3.5" />
+        <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="21" y1="10" x2="3" y2="10"></line>
+          <line x1="21" y1="6" x2="3" y2="6"></line>
+          <line x1="21" y1="14" x2="3" y2="14"></line>
+          <line x1="21" y1="18" x2="3" y2="18"></line>
+        </svg>
       </Button>
     </div>
   );

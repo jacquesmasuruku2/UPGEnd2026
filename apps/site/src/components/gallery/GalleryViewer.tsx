@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Search } from "lucide-react";
+import { MagnifyingGlass } from "@heroicons/react/24/outline";
 import type { Database } from "@/integrations/supabase/types";
 import GalleryLightbox from "@/components/gallery/GalleryLightbox";
 import "@/styles/upg-gallery.css";
@@ -107,7 +107,7 @@ const GalleryViewer = ({ items }: GalleryViewerProps) => {
                           aria-label={`Agrandir : ${img.title}`}
                           onClick={() => openAt(img)}
                         >
-                          <Search className="h-5 w-5" strokeWidth={2.25} aria-hidden />
+                          <MagnifyingGlassIcon className="h-5 w-5" strokeWidth={2.25} aria-hidden />
                         </button>
                       </div>
                     </div>

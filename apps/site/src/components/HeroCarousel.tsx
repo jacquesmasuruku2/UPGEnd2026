@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { Button } from "@/components/ui/button";
 import TypewriterText from "./TypewriterText";
 import heroBg from "@/assets/hero-bg.jpg";
@@ -150,7 +150,7 @@ const HeroCarousel = () => {
         className="absolute left-4 top-1/2 -translate-y-1/2 z-30 transition-opacity duration-300 hover:opacity-80"
         aria-label="Diapositive précédente"
       >
-        <ChevronLeft className="w-6 h-6 text-white" />
+        <ChevronLeftIcon className="w-6 h-6 text-white" />
       </button>
 
       <button
@@ -158,7 +158,7 @@ const HeroCarousel = () => {
         className="absolute right-4 top-1/2 -translate-y-1/2 z-30 transition-opacity duration-300 hover:opacity-80"
         aria-label="Diapositive suivante"
       >
-        <ChevronRight className="w-6 h-6 text-white" />
+        <ChevronRightIcon className="w-6 h-6 text-white" />
       </button>
 
       {/* Indicators */}

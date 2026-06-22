@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Layout from "@/components/Layout";
-import { User, Mail, Linkedin } from "lucide-react";
+import { UserIcon, Envelope } from "@heroicons/react/24/outline";
 import { usePersonnel } from "@/hooks/useSupabaseData";
 import AnimatedSection from "@/components/AnimatedSection";
 import { useLanguage } from "@/i18n/LanguageContext";
@@ -55,7 +55,7 @@ const PersonnelPage = () => {
                         <img src={p.photo_url} alt={p.name} className="w-full h-full object-contain bg-muted" />
                       ) : (
                         <div className="w-full h-full bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center">
-                          <User className="w-16 h-16 text-primary/40" />
+                          <UserIcon className="w-16 h-16 text-primary/40" />
                         </div>
                       )}
 
@@ -70,7 +70,7 @@ const PersonnelPage = () => {
                                 onClick={(e) => e.stopPropagation()}
                                 className="w-9 h-9 rounded-full bg-[hsl(210,80%,40%)] text-white flex items-center justify-center hover:opacity-80 transition-opacity"
                               >
-                                <Linkedin className="w-4 h-4" />
+                                <Link className="w-4 h-4" />
                               </a>
                             )}
                             {p.email && (
@@ -79,7 +79,7 @@ const PersonnelPage = () => {
                                 onClick={(e) => e.stopPropagation()}
                                 className="w-9 h-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center hover:opacity-80 transition-opacity"
                               >
-                                <Mail className="w-4 h-4" />
+                                <EnvelopeIcon className="w-4 h-4" />
                               </a>
                             )}
                           </div>
