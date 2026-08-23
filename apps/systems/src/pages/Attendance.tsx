@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
 import { format } from 'date-fns';
-import { supabase } from '@/integrations/supabase/client';
+import { laravelApi } from '@/services/laravelApi';
 import { useAuth } from '@/contexts/AuthContext';
 import type { Course, Student } from '@/types';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -13,7 +13,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
 import { toast } from 'sonner';
-import { Download, QrCode, CheckCircle2, XCircle, ClipboardCheck } from 'lucide-react';
+import { Download, QrCode, CheckCircle2, XCircle, ClipboardCheck, Clock } from 'lucide-react';
 
 const SESSION_TYPES = [
   { value: 'tp', label: 'TP / Laboratoire' },
@@ -27,6 +27,8 @@ interface AttendanceRecord {
   session_type: string;
   session_date: string;
   status: 'present' | 'absent';
+  arrival_time?: string | null;
+  departure_time?: string | null;
   qr_code?: string | null;
   validated_by?: string | null;
   created_at?: string | null;
@@ -51,12 +53,13 @@ export default function Attendance() {
   );
 
   const loadCourses = async () => {
-    const { data, error } = await supabase.from('courses').select('*').order('code');
-    if (error) {
+    try {
+      const data = await laravelApi.getCourses();
+      setCourses((data as Course[]) || []);
+    } catch (error) {
       toast.error('Impossible de charger les cours');
-      return;
+      console.error('Error loading courses:', error);
     }
-    setCourses((data as Course[]) || []);
   };
 
   const loadStudents = async () => {
@@ -73,41 +76,34 @@ export default function Attendance() {
       return;
     }
 
-    const { data: studs, error: studError } = await supabase
-      .from('students')
-      .select('*')
-      .eq('status', 'approved')
-      .eq('filiere', course.filiere)
-      .eq('promotion', course.promotion)
-      .order('nom', { ascending: true });
+    try {
+      // Charger les étudiants filtrés par filière et promotion
+      const studs = await laravelApi.getStudents({
+        status: 'approved',
+        filiere: course.filiere,
+        promotion: course.promotion,
+      });
+      setStudents((studs as Student[]) || []);
 
-    if (studError) {
-      toast.error('Impossible de charger les étudiants');
-      return;
-    }
+      // Charger les présences existantes
+      const records = await laravelApi.getCourseAttendance(selectedCourse, {
+        session_type: sessionType,
+        session_date: sessionDate,
+      });
 
-    setStudents((studs as Student[]) || []);
+      const map: Record<string, AttendanceRecord> = {};
+      (records as AttendanceRecord[] || []).forEach((record) => {
+        map[record.student_id] = record;
+      });
 
-    const { data: records, error: attendanceErr } = await supabase
-      .from('attendances')
-      .select('*')
-      .eq('course_id', selectedCourse)
-      .eq('session_type', sessionType)
-      .eq('session_date', sessionDate);
-
-    if (attendanceErr) {
-      setAttendanceError('Table attendances manquante ou inaccessible. Créez-la dans Supabase.');
+      setAttendance(map);
+      setAttendanceError(null);
+    } catch (error) {
+      toast.error('Impossible de charger les données');
+      console.error('Error loading students:', error);
+      setAttendanceError('Erreur lors du chargement des données. Vérifiez la connexion API.');
       setAttendance({});
-      return;
     }
-
-    const map: Record<string, AttendanceRecord> = {};
-    (records as AttendanceRecord[] || []).forEach((record) => {
-      map[record.student_id] = record;
-    });
-
-    setAttendance(map);
-    setAttendanceError(null);
   };
 
   useEffect(() => {
@@ -149,14 +145,16 @@ export default function Attendance() {
       validated_by: user?.id || null,
     }));
 
-    const { error } = await supabase.from('attendances').upsert(payload as any, { onConflict: 'course_id,student_id,session_date,session_type' });
-    setLoading(false);
-    if (error) {
-      toast.error('Impossible d’enregistrer la présence.');
-      return;
+    try {
+      await laravelApi.bulkCreateAttendance(payload);
+      toast.success('Présences enregistrées');
+      loadStudents();
+    } catch (error) {
+      toast.error('Impossible d\'enregistrer la présence.');
+      console.error('Error saving attendance:', error);
+    } finally {
+      setLoading(false);
     }
-    toast.success('Présences enregistrées');
-    loadStudents();
   };
 
   const buildQrCodeValue = (studentId: string) =>
@@ -225,7 +223,7 @@ export default function Attendance() {
               <SelectContent>
                 {courses.map((course) => (
                   <SelectItem key={course.id} value={course.id}>
-                    {course.code} — {course.nom}
+                    {course.code} â€” {course.nom}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -250,7 +248,7 @@ export default function Attendance() {
 
         <div className="flex flex-col gap-2 md:w-72">
           <Button variant="secondary" onClick={downloadInterrogationList} className="w-full">
-            <Download className="h-4 w-4 mr-2" /> Télécharger la liste d’interrogation
+            <Download className="h-4 w-4 mr-2" /> Télécharger la liste d'interrogation
           </Button>
           <Button onClick={saveAttendance} disabled={!selectedCourse || loading} className="w-full">
             <CheckCircle2 className="h-4 w-4 mr-2" /> Enregistrer les présences
@@ -313,6 +311,8 @@ export default function Attendance() {
                 <TableHead>Nom</TableHead>
                 <TableHead>Filière</TableHead>
                 <TableHead>Présence</TableHead>
+                <TableHead>Arrivée</TableHead>
+                <TableHead>Départ</TableHead>
                 <TableHead>QR</TableHead>
               </TableRow>
             </TableHeader>
@@ -322,7 +322,7 @@ export default function Attendance() {
                 const status = record?.status || 'absent';
                 return (
                   <TableRow key={student.id}>
-                    <TableCell className="font-mono text-sm">{student.matricule || '—'}</TableCell>
+                    <TableCell className="font-mono text-sm">{student.matricule || 'â€”'}</TableCell>
                     <TableCell>{student.nom} {student.postnom} {student.prenom}</TableCell>
                     <TableCell>{student.filiere}</TableCell>
                     <TableCell>
@@ -342,6 +342,52 @@ export default function Attendance() {
                           Absent
                         </Button>
                       </div>
+                    </TableCell>
+                    <TableCell>
+                      <Input
+                        type="time"
+                        className="w-24 text-sm"
+                        value={record?.arrival_time || ''}
+                        onChange={(e) => {
+                          setAttendance((prev) => ({
+                            ...prev,
+                            [student.id]: {
+                              ...(prev[student.id] || {
+                                student_id: student.id,
+                                course_id: selectedCourse,
+                                session_type: sessionType,
+                                session_date: sessionDate,
+                                status: status || 'absent',
+                              }),
+                              arrival_time: e.target.value as string,
+                            },
+                          }));
+                        }}
+                        disabled={status !== 'present'}
+                      />
+                    </TableCell>
+                    <TableCell>
+                      <Input
+                        type="time"
+                        className="w-24 text-sm"
+                        value={record?.departure_time || ''}
+                        onChange={(e) => {
+                          setAttendance((prev) => ({
+                            ...prev,
+                            [student.id]: {
+                              ...(prev[student.id] || {
+                                student_id: student.id,
+                                course_id: selectedCourse,
+                                session_type: sessionType,
+                                session_date: sessionDate,
+                                status: status || 'absent',
+                              }),
+                              departure_time: e.target.value as string,
+                            },
+                          }));
+                        }}
+                        disabled={status !== 'present'}
+                      />
                     </TableCell>
                     <TableCell>
                       <Button size="sm" variant="secondary" onClick={() => setQrStudent(student)}>
@@ -366,7 +412,7 @@ export default function Attendance() {
               })}
               {students.length === 0 && (
                 <TableRow>
-                  <TableCell colSpan={5} className="text-center text-muted-foreground py-8">
+                  <TableCell colSpan={7} className="text-center text-muted-foreground py-8">
                     Sélectionnez un cours pour afficher les étudiants.
                   </TableCell>
                 </TableRow>
@@ -381,9 +427,9 @@ export default function Attendance() {
           <CardTitle>Guide de présence</CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>✅ Utilisez les codes QR pour les séances pratiques et les laboratoires.</p>
-          <p>✅ Enregistrez un code QR dans l’interface ou utilisez la validation manuelle.</p>
-          <p>✅ Téléchargez la liste d’interrogation en CSV pour l’impression ou l’archivage.</p>
+          <p>✓ Utilisez les codes QR pour les séances pratiques et les laboratoires.</p>
+          <p>✓ Enregistrez un code QR dans l'interface ou utilisez la validation manuelle.</p>
+          <p>✓ Téléchargez la liste d'interrogation en CSV pour l'impression ou l'archivage.</p>
         </CardContent>
       </Card>
     </div>
